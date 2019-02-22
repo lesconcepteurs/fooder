@@ -1,17 +1,23 @@
 package metier;
 
 public class Ingredient {
+	
 	private int idIng;
 	private String nomIng;
 	private String photoIng;
 	
-	/*
-	 * Constructeur
+	/**
+	 * Constructeur Ingredient
+	 * @param idIng (int)
+	 * @param nomIng (String)
+	 * @param photoIng (String)
 	 */
 	public Ingredient(int idIng, String nomIng, String photoIng) {
+		
 		this.idIng = idIng;
 		this.nomIng = nomIng;
 		this.photoIng = photoIng;
+		
 	}
 	
 	/*
@@ -26,6 +32,7 @@ public class Ingredient {
 	public String getPhotoIng() {
 		return photoIng;
 	}
+	
 	private void setIdIng(int idIng) {
 		this.idIng = idIng;
 	}
@@ -35,6 +42,7 @@ public class Ingredient {
 	private void setPhotoIng(String photoIng) {
 		this.photoIng = photoIng;
 	}
+	
 	
 	@Override
 	public String toString() {

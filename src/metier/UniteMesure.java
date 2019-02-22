@@ -1,16 +1,22 @@
 package metier;
 
 public class UniteMesure {
+	
 	private int idMesure;
 	private String nomMesure;
 	
-	/*
-	 * Constructeur
+	/**
+	 * Constructeur d'UniteMesure
+	 * @param idMesure (int)
+	 * @param nomMesure (String)
 	 */
 	public UniteMesure(int idMesure, String nomMesure) {
+		
 		this.idMesure = idMesure;
 		this.nomMesure = nomMesure;
+		
 	}
+	
 	/*
 	 * Getters Setters
 	 */
@@ -18,7 +24,6 @@ public class UniteMesure {
 	public int getIdMesure() {
 		return idMesure;
 	}
-
 	public String getNomMesure() {
 		return nomMesure;
 	}
@@ -26,11 +31,11 @@ public class UniteMesure {
 	private void setIdMesure(int idMesure) {
 		this.idMesure = idMesure;
 	}
-
 	private void setNomMesure(String nomMesure) {
 		this.nomMesure = nomMesure;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "UniteMesure [idMesure=" + idMesure + ", nomMesure=" + nomMesure + "]";

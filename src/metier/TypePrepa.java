@@ -1,14 +1,16 @@
 package metier;
 
-public class typePrepa {
+public class TypePrepa {
+	
 	private int idTypePrepa;
 	private String nomTypePrepa;
 	
-	/*
-	 * Constructeur
+	/**
+	 * Constructeur de TypePrepa
+	 * @param idTypePrepa (int)
+	 * @param nomTypePrepa (String)
 	 */
-	
-	public typePrepa(int idTypePrepa, String nomTypePrepa) {
+	public TypePrepa(int idTypePrepa, String nomTypePrepa) {
 		this.idTypePrepa = idTypePrepa;
 		this.nomTypePrepa = nomTypePrepa;
 	}
@@ -20,7 +22,6 @@ public class typePrepa {
 	public int getIdTypePrepa() {
 		return idTypePrepa;
 	}
-
 	public String getNomTypePrepa() {
 		return nomTypePrepa;
 	}
@@ -28,7 +29,6 @@ public class typePrepa {
 	private void setIdTypePrepa(int idTypePrepa) {
 		this.idTypePrepa = idTypePrepa;
 	}
-
 	private void setNomTypePrepa(String nomTypePrepa) {
 		this.nomTypePrepa = nomTypePrepa;
 	}
