@@ -3,24 +3,30 @@ package metier;
 public class Recette {
 	
 	private int idRec;
+	private int idTheme;
+	private int typeRec;
 	private String nomRec;
 	private String descRec;
-	private short selPoivre;
+	private boolean selPoivre;
 	private String photoRec;
 	private String complementRec;
 	
 	/**
 	 * Constructeur de Recette
 	 * @param idRec (int)
+	 * @param idTheme (int)
+	 * @param typeRec (int)
 	 * @param nomRec (String)
 	 * @param descRec (String)
 	 * @param selPoivre (short)
 	 * @param photoRec (String)
 	 * @param complementRec (String)
 	 */
-	public Recette(int idRec, String nomRec, String descRec, short selPoivre, String photoRec, String complementRec) {
+	public Recette(int idRec, int idTheme, int typeRec, String nomRec, String descRec, boolean selPoivre, String photoRec, String complementRec) {
 		
 		this.idRec = idRec;
+		this.setIdTheme(idTheme);
+		this.setTypeRec(typeRec);
 		this.nomRec = nomRec;
 		this.descRec = descRec;
 		this.selPoivre = selPoivre;
@@ -28,6 +34,13 @@ public class Recette {
 		this.complementRec = complementRec;
 		
 	}
+	
+	/**
+	 * Constructeur par defaut utilisé par la DAO
+	 * @see dao/implement/RecetteDAO.java
+	 */
+	public Recette() {}
+	
 	
 	/*
 	 * Getters Setters
@@ -42,7 +55,7 @@ public class Recette {
 	public String getDescRec() {
 		return descRec;
 	}
-	public short getSelPoivre() {
+	public boolean getSelPoivre() {
 		return selPoivre;
 	}
 	public String getPhotoRec() {
@@ -51,7 +64,19 @@ public class Recette {
 	public String getComplementRec() {
 		return complementRec;
 	}
-
+	public int getIdTheme() {
+		return idTheme;
+	}
+	public int getTypeRec() {
+		return typeRec;
+	}
+	
+	private void setTypeRec(int typeRec) {
+		this.typeRec = typeRec;
+	}
+	private void setIdTheme(int idTheme) {
+		this.idTheme = idTheme;
+	}
 	private void setIdRec(int idRec) {
 		this.idRec = idRec;
 	}
@@ -61,7 +86,7 @@ public class Recette {
 	private void setDescRec(String descRec) {
 		this.descRec = descRec;
 	}
-	private void setSelPoivre(short selPoivre) {
+	private void setSelPoivre(boolean selPoivre) {
 		this.selPoivre = selPoivre;
 	}
 	private void setPhotoRec(String photoRec) {
@@ -74,10 +99,15 @@ public class Recette {
 	
 	@Override
 	public String toString() {
-		return "Recette [idRec=" + idRec + ", nomRec=" + nomRec + ", descRec=" + descRec + ", selPoivre=" + selPoivre
-				+ ", photoRec=" + photoRec + ", complementRec=" + complementRec + "]";
+		return "Recette [idRec=" + idRec + ", "
+					  + "idTheme=" + idTheme + ", "
+					  + "typeRec=" + typeRec + ", "
+					  + "nomRec=" + nomRec + ", "
+					  + "descRec=" + descRec + ", "
+					  + "selPoivre=" + selPoivre + ", "
+					  + "photoRec=" + photoRec + ", "
+					  + "complementRec=" + complementRec + "]";
 	}
-	
-	
+
 }
 		
