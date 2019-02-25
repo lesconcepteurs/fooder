@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Classe DAO typee generique
@@ -44,7 +45,8 @@ public abstract class DAO<T> {
   * Méthode de recherche des informations
   * @param id
   * @return T
+  * @throws SQLException 
   */
-  public abstract T find(int id);
+  public abstract T find(int id) throws SQLException;
 
 }
