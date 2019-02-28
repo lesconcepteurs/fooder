@@ -1,4 +1,4 @@
 .project
 /target
 .settings
-\src\main\java\les\concepteurs\fooder\app\.gitignore
+/src/main/java/les/concepteurs/fooder/app/.gitignore
