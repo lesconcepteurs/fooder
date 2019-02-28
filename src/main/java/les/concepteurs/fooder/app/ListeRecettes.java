@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class testServlet
+ * Servlet implementation class ListeRecettes
  */
-public class testServlet extends HttpServlet {
+public class ListeRecettes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public testServlet() {
+    public ListeRecettes() {
         super();
         // TODO Auto-generated constructor stub
     }
