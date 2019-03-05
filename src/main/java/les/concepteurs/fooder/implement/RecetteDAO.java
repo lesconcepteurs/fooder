@@ -81,7 +81,7 @@ public class RecetteDAO extends DAO<Recette> {
 				String 	photoRec = result.getString("PHOTO_REC");
 				String 	complementRec = result.getString("COMPLEMENT_REC");
 				boolean selPoivre = (result.getInt("SEL_POIVRE") == 1 ) ?  true : false;
-				ListeDenrees listeDenrees = new ListeDenrees();
+				ListeDenrees listeDenrees = new ListeDenreesDAO(connect).find(idRec);
 				ListePreparations listePreparations = new ListePreparations();
 				
 				recette = new Recette(idRec, themeRec, typeRec, nomRec, descRec, selPoivre, photoRec, complementRec, listeDenrees, listePreparations);
