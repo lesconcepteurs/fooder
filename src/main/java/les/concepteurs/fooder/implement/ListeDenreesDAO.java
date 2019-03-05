@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import les.concepteurs.fooder.dao.DAO;
 import les.concepteurs.fooder.metier.Denree;
-import les.concepteurs.fooder.metier.Ingredient;
 import les.concepteurs.fooder.metier.ListeDenrees;
 
 public class ListeDenreesDAO extends DAO<ListeDenrees> {
@@ -42,7 +40,7 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 		
 		ListeDenrees listeDenrees = null;
 		
-try {
+		try {
 			
 			prepare = connect.prepareStatement(
 					"SELECT DISTINCT D.ID_ING, D.QUANTITE , UM.NOM_UNITE "
@@ -55,7 +53,9 @@ try {
 			
 			while (result.next()) {
 				
-				Denree denree = new Denree(new Ingredient(), result.getString("NOM_UNITE"), result.getInt("QUANTITE"));
+				Denree denree = new Denree(new IngredientDAO(connect).find(result.getInt("ID_ING")), 
+											result.getString("NOM_UNITE"), 
+											result.getInt("QUANTITE"));
 				
 				listeDenrees.add(denree);
 				

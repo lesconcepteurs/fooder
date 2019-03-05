@@ -5,21 +5,21 @@ public class Ingredient {
 	private int idIng;
 	private String nomIng;
 	private String photoIng;
-	private Rayon rayon;
+	private String nomRayon;
 	
 	/**
 	 * Constructeur Ingredient
 	 * @param idIng (int)
 	 * @param nomIng (String)
 	 * @param photoIng (String)
-	 * @param rayon (Rayon)
+	 * @param nomRayon (String)
 	 */
-	public Ingredient(int idIng, String nomIng, String photoIng, Rayon rayon) {
+	public Ingredient(int idIng, String nomIng, String photoIng, String nomRayon) {
 		
 		this.idIng = idIng;
 		this.nomIng = nomIng;
 		this.photoIng = photoIng;
-		this.rayon = rayon;
+		this.nomRayon = nomRayon;
 		
 	}
 	
@@ -38,11 +38,11 @@ public class Ingredient {
 	public String getPhotoIng() {
 		return photoIng;
 	}
-	public Rayon getRayon() {
-		return rayon;
+	public String getNomRayon() {
+		return nomRayon;
 	}
-	public void setRayon(Rayon rayon) {
-		this.rayon = rayon;
+	public void setNomRayon(String nomRayon) {
+		this.nomRayon = nomRayon;
 	}
 	private void setIdIng(int idIng) {
 		this.idIng = idIng;
@@ -56,7 +56,7 @@ public class Ingredient {
 
 	@Override
 	public String toString() {
-		return "Ingredient [idIng=" + idIng + ", nomIng=" + nomIng + ", photoIng=" + photoIng + ", rayon=" + rayon + "]";
+		return "Ingredient [idIng=" + idIng + ", nomIng=" + nomIng + ", photoIng=" + photoIng + ", rayon=" + nomRayon + "]";
 	}	
 
 }
