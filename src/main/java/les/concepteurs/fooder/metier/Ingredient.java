@@ -23,6 +23,9 @@ public class Ingredient {
 		
 	}
 	
+	public Ingredient() {}
+	
+	
 	/*
 	 * Getters Setters
 	 */
