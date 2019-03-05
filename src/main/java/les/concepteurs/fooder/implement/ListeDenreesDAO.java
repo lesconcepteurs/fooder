@@ -45,18 +45,19 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 try {
 			
 			prepare = connect.prepareStatement(
-					"SELECT ID_ING, ID_UNITE, QUANTITE "
-					+ "FROM DENREE  "
-					+ "WHERE ID_REC = ?");
+					"SELECT DISTINCT D.ID_ING, D.QUANTITE , UM.NOM_UNITE "
+					+ "FROM DENREE D, UNITE_MESURE UM "
+					+ "WHERE ID_REC = ?"
+					+ "  AND UM.ID_UNITE = D.ID_UNITE");
 			prepare.setInt(1, id);
 			
 			ResultSet result = prepare.executeQuery();
 			
 			while (result.next()) {
 				
-				Denree denree = new Denree(Ingredient ingredient, String nomUniteMesure, int quantite);
+				Denree denree = new Denree(new Ingredient(), result.getString("NOM_UNITE"), result.getInt("QUANTITE"));
 				
-				ListeDenrees.add(result.getString("TEXT_DESC"));
+				listeDenrees.add(denree);
 				
 			}			
 			
