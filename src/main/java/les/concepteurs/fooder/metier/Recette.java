@@ -3,111 +3,152 @@ package les.concepteurs.fooder.metier;
 public class Recette {
 	
 	private int idRec;
-	private int idTheme;
-	private int typeRec;
+	private String themeRec;
+	private String typeRec;
 	private String nomRec;
-	private String descRec;
+	private ListeDescriptionsRecette descRec;
 	private boolean selPoivre;
 	private String photoRec;
 	private String complementRec;
+	private ListeDenrees denrees;
+	private ListePreparations listePrepa;
+
 	
 	/**
-	 * Constructeur de Recette
 	 * @param idRec (int)
-	 * @param idTheme (int)
-	 * @param typeRec (int)
+	 * @param themeRec (String)
+	 * @param typeRec (String)
 	 * @param nomRec (String)
-	 * @param descRec (String)
-	 * @param selPoivre (short)
+	 * @param descRec (ListeDescRec)
+	 * @param selPoivre (boolean)
 	 * @param photoRec (String)
 	 * @param complementRec (String)
+	 * @param denrees (ListeDenrees)
 	 */
-	public Recette(int idRec, int idTheme, int typeRec, String nomRec, String descRec, boolean selPoivre, String photoRec, String complementRec) {
-		
+	public Recette(
+			int idRec, 
+			String themeRec, 
+			String typeRec, 
+			String nomRec, 
+			ListeDescriptionsRecette descRec,
+			boolean selPoivre, 
+			String photoRec, 
+			String complementRec, 
+			ListeDenrees denrees,
+			ListePreparations listePrepa) {
+
 		this.idRec = idRec;
-		this.setIdTheme(idTheme);
-		this.setTypeRec(typeRec);
+		this.themeRec = themeRec;
+		this.typeRec = typeRec;
 		this.nomRec = nomRec;
 		this.descRec = descRec;
 		this.selPoivre = selPoivre;
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
+		this.denrees = denrees;
+		this.listePrepa = listePrepa;
 		
 	}
 	
 	/**
-	 * Constructeur par defaut utilisé par la DAO
-	 * @see dao/implement/RecetteDAO.java
+	 * Default Constructor
 	 */
 	public Recette() {}
 	
 	
 	/*
-	 * Getters Setters
+	 * Utilities
 	 */
 
 	public int getIdRec() {
 		return idRec;
 	}
+
+	public String getThemeRec() {
+		return themeRec;
+	}
+
+	public String getTypeRec() {
+		return typeRec;
+	}
+
 	public String getNomRec() {
 		return nomRec;
 	}
-	public String getDescRec() {
+
+	public ListeDescriptionsRecette getDescRec() {
 		return descRec;
 	}
-	public boolean getSelPoivre() {
+
+	public boolean isSelPoivre() {
 		return selPoivre;
 	}
+
 	public String getPhotoRec() {
 		return photoRec;
 	}
+
 	public String getComplementRec() {
 		return complementRec;
 	}
-	public int getIdTheme() {
-		return idTheme;
+
+	public ListeDenrees getDenrees() {
+		return denrees;
 	}
-	public int getTypeRec() {
-		return typeRec;
+
+	public ListePreparations getListePrepa() {
+		return listePrepa;
 	}
-	
-	private void setTypeRec(int typeRec) {
-		this.typeRec = typeRec;
-	}
-	private void setIdTheme(int idTheme) {
-		this.idTheme = idTheme;
-	}
-	private void setIdRec(int idRec) {
+
+	public void setIdRec(int idRec) {
 		this.idRec = idRec;
 	}
-	private void setNomRec(String nomRec) {
+
+	public void setThemeRec(String themeRec) {
+		this.themeRec = themeRec;
+	}
+
+	public void setTypeRec(String typeRec) {
+		this.typeRec = typeRec;
+	}
+
+	public void setNomRec(String nomRec) {
 		this.nomRec = nomRec;
 	}
-	private void setDescRec(String descRec) {
+
+	public void setDescRec(ListeDescriptionsRecette descRec) {
 		this.descRec = descRec;
 	}
-	private void setSelPoivre(boolean selPoivre) {
+
+	public void setSelPoivre(boolean selPoivre) {
 		this.selPoivre = selPoivre;
 	}
-	private void setPhotoRec(String photoRec) {
+
+	public void setPhotoRec(String photoRec) {
 		this.photoRec = photoRec;
 	}
-	private void setComplementRec(String complementRec) {
+
+	public void setComplementRec(String complementRec) {
 		this.complementRec = complementRec;
 	}
 
-	
+	public void setDenrees(ListeDenrees denrees) {
+		this.denrees = denrees;
+	}
+
+	public void setListePrepa(ListePreparations listePrepa) {
+		this.listePrepa = listePrepa;
+	}
+
 	@Override
 	public String toString() {
-		return "Recette [idRec=" + idRec + ", "
-					  + "idTheme=" + idTheme + ", "
-					  + "typeRec=" + typeRec + ", "
-					  + "nomRec=" + nomRec + ", "
-					  + "descRec=" + descRec + ", "
-					  + "selPoivre=" + selPoivre + ", "
-					  + "photoRec=" + photoRec + ", "
-					  + "complementRec=" + complementRec + "]";
+		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
+				+ ", descRec=" + descRec + ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec="
+				+ complementRec + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
 	}
+
+	
+	
 
 }
 		
