@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import les.concepteurs.fooder.dao.DAO;
-import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.ListeDenrees;
 import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
 import les.concepteurs.fooder.metier.ListePreparations;
