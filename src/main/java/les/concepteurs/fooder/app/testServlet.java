@@ -2,11 +2,9 @@ package les.concepteurs.fooder.app;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.dao.DAOConnect;
-import les.concepteurs.fooder.implement.IngredientDAO;
-import les.concepteurs.fooder.implement.RecetteDAO;
-import les.concepteurs.fooder.metier.Ingredient;
-import les.concepteurs.fooder.metier.Recette;
 
 /**
  * Servlet implementation class testServlet
