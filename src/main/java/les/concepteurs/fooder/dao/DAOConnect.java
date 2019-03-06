@@ -17,7 +17,7 @@ public class DAOConnect {
 
 	//Infos de connexion
 //	private String url 	= "jdbc:oracle:thin:@localhost:1521:XE";
-	private String url 	= "jdbc:mysql:@localhost/fooder";
+	private String url 	= "jdbc:mysql:@localhost:3306/fooder";
 	private String user = "fooder";
 	private String pwd  = "fooderpw";
 	
@@ -26,7 +26,9 @@ public class DAOConnect {
 	private DAOConnect(){
 	  try {
 		  
-	    connect = DriverManager.getConnection(url, user, pwd);
+		//ODBC ===> connect = DriverManager.getConnection(url, user, pwd);  
+	    connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooder?user=fooder&password=fooderpw"
+	    		+ "&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC");
 	    
 	  } catch (SQLException e) {
 	     e.printStackTrace();
