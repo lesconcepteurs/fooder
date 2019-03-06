@@ -71,13 +71,7 @@ public class IngredientDAO extends DAO<Ingredient>  {
 			
 			e.printStackTrace();
 			
-		} finally {
-
-			if (prepare != null) prepare.close();
-			
-			if (this.connect != null) this.connect.close();
-
-		}
+		} 
 		
 		return ingredient;
 	}

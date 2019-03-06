@@ -97,9 +97,6 @@ public class ListePreparationsDAO extends DAO<ListePreparations> {
 			e.printStackTrace();			
 			System.out.println(e.getMessage());
 			
-		}finally {
-			if (prepare != null)	prepare.close();
-			if (this.connect != null) this.connect.close();
 		}
 		
 		return listePreparations;

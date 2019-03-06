@@ -63,10 +63,7 @@ public class ListeDescriptionsRecetteDAO extends DAO<ListeDescriptionsRecette> {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (prepare != null) prepare.close();		
-			if (this.connect != null) this.connect.close();
-		}	
+		} 
 		
 		return listeDescriptionsRecette;
 	}

@@ -63,11 +63,8 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (prepare != null) prepare.close();		
-			if (this.connect != null) this.connect.close();
-		}	
-
+		} 
+		
 		return listeDenrees;
 	}
 
