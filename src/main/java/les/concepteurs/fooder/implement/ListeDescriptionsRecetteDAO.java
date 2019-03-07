@@ -40,36 +40,25 @@ public class ListeDescriptionsRecetteDAO extends DAO<ListeDescriptionsRecette> {
 	@Override
 	public ListeDescriptionsRecette find(int id) throws SQLException {
 		
-		listeDescriptionsRecette = new ListeDescriptionsRecette();
+	listeDescriptionsRecette = new ListeDescriptionsRecette();
 		
-		try {
+		prepare = connect.prepareStatement(
+				"select ID_DESC, ID_REC, TEXT_DESC "
+				+ "from DESCRIPTION_RECETTE "
+				+ "where ID_REC = ?");
+		prepare.setInt(1, id);
+		
+		ResultSet result = prepare.executeQuery();
+		
+		while (result.next()) {
 			
-			prepare = connect.prepareStatement(
-					"select ID_DESC, ID_REC, TEXT_DESC "
-					+ "from DESCRIPTION_RECETTE "
-					+ "where ID_REC = ?");
-			prepare.setInt(1, id);
+			Description desc = new Description(result.getInt("ID_DESC"), result.getInt("ID_REC"), result.getString("TEXT_DESC"));
+							
+			listeDescriptionsRecette.add(desc);
 			
-			ResultSet result = prepare.executeQuery();
-			
-			int i = 0;
-			while (result.next()) {
-				
-				
-				i++;
-				System.out.println(i);
-				
-				Description desc = new Description(result.getInt("ID_DESC"), result.getInt("ID_REC"), result.getString("TEXT_DESC"));
-				
-				System.out.println(desc);
-				
-				listeDescriptionsRecette.add(desc);
-				
-			}			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+		}			
+
+		prepare.close();
 		
 		return listeDescriptionsRecette;
 	}

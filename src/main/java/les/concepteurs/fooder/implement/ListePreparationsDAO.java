@@ -66,40 +66,29 @@ public class ListePreparationsDAO extends DAO<ListePreparations> {
 								+ "LEFT JOIN type_prepa tp ON sp.id_type_prepa = tp.id_type_prepa "
 								+ "LEFT JOIN unite_duree ud ON sp.id_unite_duree = ud.id_unite_duree "
 								+ "WHERE id_rec=?;";
-		
-		try {
 			
-			prepare = connect.prepareStatement(requetePrepare);
+		prepare = connect.prepareStatement(requetePrepare);
 			
-			//Set du ? par l'id envoyé qui se trouve à la position 1 de la table se_prepare
-			prepare.setInt(1, id);
+		//Set du ? par l'id envoyé qui se trouve à la position 1 de la table se_prepare
+		prepare.setInt(1, id);
 			
-			ResultSet result = prepare.executeQuery();
+		ResultSet result = prepare.executeQuery();
 			
-//			if (result == null) throw new ResultSetNull();*/
-//			else {
-//								
-				while (result.next()) {
+		while (result.next()) {
 					
-					//Creation d'un objet Preparation.			
-					Preparation preparation = new Preparation(
-							result.getString(NOMPREPA), 
-							result.getInt(DUREE), 
-							result.getString(NOMUNITE), 
-							result.getInt(DUREESECOND)
-							);
-					
-					//ajout dans la listePreparation
-					listePreparations.add(preparation);
-				}
-						
-//			}			
-			
-		}catch (Exception e ) {
-			e.printStackTrace();			
-			System.out.println(e.getMessage());
-			
+			//Creation d'un objet Preparation.			
+			Preparation preparation = new Preparation(
+					result.getString(NOMPREPA), 
+					result.getInt(DUREE), 
+					result.getString(NOMUNITE), 
+					result.getInt(DUREESECOND)
+					);
+				
+			//ajout dans la listePreparation
+			listePreparations.add(preparation);
 		}
+
+		prepare.close();
 		
 		return listePreparations;
 	}

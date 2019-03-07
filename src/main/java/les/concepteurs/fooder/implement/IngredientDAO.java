@@ -18,7 +18,6 @@ public class IngredientDAO extends DAO<Ingredient>  {
 
 	public IngredientDAO(Connection conn) {
 		super(conn);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -43,36 +42,29 @@ public class IngredientDAO extends DAO<Ingredient>  {
 	public Ingredient find(int id) throws SQLException {
 
 		Ingredient ingredient = null;
-		
-		try {
 								
-			prepare = connect.prepareStatement(
-					"SELECT DISTINCT I.ID_ING, I.ID_RAYON, I.NOM_ING, I.PHOTO_ING, R.NOM as NOM_RAYON "
-					+ "FROM INGREDIENT I, RAYON R "
-					+ "WHERE I.ID_ING = ? "
-					+ "  AND R.ID_RAYON = I.ID_RAYON");
-			prepare.setInt(1, id);
+		prepare = connect.prepareStatement(
+				"SELECT DISTINCT I.ID_ING, I.ID_RAYON, I.NOM_ING, I.PHOTO_ING, R.NOM as NOM_RAYON "
+				+ "FROM INGREDIENT I, RAYON R "
+				+ "WHERE I.ID_ING = ? "
+				+ "  AND R.ID_RAYON = I.ID_RAYON");
+		prepare.setInt(1, id);
 
-			ResultSet result = prepare.executeQuery();
-						
-			while (result.next()) {
+		ResultSet result = prepare.executeQuery();
 					
-				int 	idIng = result.getInt("ID_ING");
-				String 	nomIng = result.getString("NOM_ING");
-				String 	photoIng = result.getString("PHOTO_ING");
-				String 	nomRayon = result.getString("NOM_RAYON");
+		while (result.next()) {
 				
-				
-				ingredient = new Ingredient(idIng, nomIng, photoIng, nomRayon);
-				
-			}			
+			int 	idIng = result.getInt("ID_ING");
+			String 	nomIng = result.getString("NOM_ING");
+			String 	photoIng = result.getString("PHOTO_ING");
+			String 	nomRayon = result.getString("NOM_RAYON");
 			
-		} catch(SQLException e) {
+			ingredient = new Ingredient(idIng, nomIng, photoIng, nomRayon);
 			
-			e.printStackTrace();
-			
-		} 
+		}			
 		
+		prepare.close();
+
 		return ingredient;
 	}
 
