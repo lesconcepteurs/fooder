@@ -3,3 +3,4 @@
 .settings
 /src/main/java/les/concepteurs/fooder/app/.gitignore
 .classpath
+/bin
