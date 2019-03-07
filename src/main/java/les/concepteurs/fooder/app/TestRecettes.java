@@ -19,13 +19,13 @@ import les.concepteurs.fooder.metier.Recette;
 /**
  * Servlet implementation class ListeRecettes
  */
-public class ListeRecettes extends HttpServlet {
+public class TestRecettes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListeRecettes() {
+    public TestRecettes() {
         super();
         // TODO Auto-generated constructor stub
     }
