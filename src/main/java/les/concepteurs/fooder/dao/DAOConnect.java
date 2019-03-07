@@ -27,7 +27,7 @@ public class DAOConnect {
 	  try {
 		  
 		//ODBC ===> connect = DriverManager.getConnection(url, user, pwd);  
-	    connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooder?user=fooder&password=fooderpw"
+	    connect = DriverManager.getConnection(url +"?user="+ user +"&password="+ pwd
 	    		+ "&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC");
 	    
 	  } catch (SQLException e) {
