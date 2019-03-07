@@ -17,6 +17,9 @@ public class Rayon {
 		
 	}
 	
+	public Rayon() {}
+	
+	
 	/*
 	 * Getters Setters
 	 */

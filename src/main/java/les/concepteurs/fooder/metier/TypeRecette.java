@@ -17,6 +17,8 @@ public class TypeRecette {
 		
 	}
 	
+	public TypeRecette() {}
+	
 	/*
 	 * Setters Getters
 	 **/
@@ -28,10 +30,10 @@ public class TypeRecette {
 		return nomTypeR;
 	}
 	
-	private void setIdTypeR(int idTypeR) {
+	public void setIdTypeR(int idTypeR) {
 		this.idTypeR = idTypeR;
 	}
-	private void setNomTypeR(String nomTypeR) {
+	public void setNomTypeR(String nomTypeR) {
 		this.nomTypeR = nomTypeR;
 	}
 

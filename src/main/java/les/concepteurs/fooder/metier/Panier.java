@@ -19,6 +19,8 @@ public class Panier {
 		
 	}
 	
+	public Panier(){}
+	
 	/*
 	 * Settes Getters
 	 * */
@@ -29,10 +31,10 @@ public class Panier {
 		return datePanier;
 	}
 	
-	private void setIdPanier(int idPanier) {
+	public void setIdPanier(int idPanier) {
 		this.idPanier = idPanier;
 	}
-	private void setDatePanier(LocalDate datePanier) {
+	public void setDatePanier(LocalDate datePanier) {
 		this.datePanier = datePanier;
 	}
 	

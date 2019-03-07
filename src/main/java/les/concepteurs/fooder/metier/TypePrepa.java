@@ -14,6 +14,8 @@ public class TypePrepa {
 		this.idTypePrepa = idTypePrepa;
 		this.nomTypePrepa = nomTypePrepa;
 	}
+	
+	public TypePrepa() {}
 
 	/*
 	 * Getters Setters
@@ -26,10 +28,10 @@ public class TypePrepa {
 		return nomTypePrepa;
 	}
 
-	private void setIdTypePrepa(int idTypePrepa) {
+	public void setIdTypePrepa(int idTypePrepa) {
 		this.idTypePrepa = idTypePrepa;
 	}
-	private void setNomTypePrepa(String nomTypePrepa) {
+	public void setNomTypePrepa(String nomTypePrepa) {
 		this.nomTypePrepa = nomTypePrepa;
 	}
 	

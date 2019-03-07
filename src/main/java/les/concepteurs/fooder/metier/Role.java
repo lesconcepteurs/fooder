@@ -17,6 +17,8 @@ public class Role {
 		
 	}
 	
+	public Role() {}
+	
 	/*
 	 * Getters Setters
 	 */
@@ -28,10 +30,10 @@ public class Role {
 		return nomRole;
 	}
 	
-	private void setIdRole(int idRole) {
+	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
-	private void setNomRole(String nomRole) {
+	public void setNomRole(String nomRole) {
 		this.nomRole = nomRole;
 	}
 

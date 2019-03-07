@@ -44,13 +44,13 @@ public class Ingredient {
 	public void setNomRayon(String nomRayon) {
 		this.nomRayon = nomRayon;
 	}
-	private void setIdIng(int idIng) {
+	public void setIdIng(int idIng) {
 		this.idIng = idIng;
 	}
-	private void setNomIng(String nomIng) {
+	public void setNomIng(String nomIng) {
 		this.nomIng = nomIng;
 	}
-	private void setPhotoIng(String photoIng) {
+	public void setPhotoIng(String photoIng) {
 		this.photoIng = photoIng;
 	}
 

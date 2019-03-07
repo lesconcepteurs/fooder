@@ -19,6 +19,8 @@ public class Utilisateur {
 		this.password = password;
 		
 	}
+	
+	public Utilisateur() {}
 
 	/*
 	 * Getters Setters
@@ -34,13 +36,13 @@ public class Utilisateur {
 		return password;
 	}
 
-	private void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(int idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
-	private void setEmailUtilisateur(String emailUtilisateur) {
+	public void setEmailUtilisateur(String emailUtilisateur) {
 		this.emailUtilisateur = emailUtilisateur;
 	}
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

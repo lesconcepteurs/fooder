@@ -14,6 +14,8 @@ public class ThemeRecette {
 		this.idTheme = idTheme;
 		this.nomTheme = nomTheme;
 	}
+	
+	public ThemeRecette() {}
 
 
 	public int getIdTheme() {

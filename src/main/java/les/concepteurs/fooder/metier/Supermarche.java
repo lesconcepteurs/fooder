@@ -16,6 +16,8 @@ public class Supermarche {
 		
 	}
 	
+	public Supermarche() {}
+	
 	/*
 	 * Getters Setters 
 	 */
@@ -27,10 +29,10 @@ public class Supermarche {
 		return nomSm;
 	}
 
-	private void setIdSm(int idSm) {
+	public void setIdSm(int idSm) {
 		this.idSm = idSm;
 	}
-	private void setNomSm(String nomSm) {
+	public void setNomSm(String nomSm) {
 		this.nomSm = nomSm;
 	}
 

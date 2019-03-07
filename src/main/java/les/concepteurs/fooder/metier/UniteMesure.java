@@ -17,6 +17,8 @@ public class UniteMesure {
 		
 	}
 	
+	public UniteMesure() {}
+	
 	/*
 	 * Getters Setters
 	 */
@@ -28,10 +30,10 @@ public class UniteMesure {
 		return nomMesure;
 	}
 
-	private void setIdMesure(int idMesure) {
+	public void setIdMesure(int idMesure) {
 		this.idMesure = idMesure;
 	}
-	private void setNomMesure(String nomMesure) {
+	public void setNomMesure(String nomMesure) {
 		this.nomMesure = nomMesure;
 	}
 
