@@ -18,6 +18,8 @@ import les.concepteurs.fooder.metier.Preparation;
 public class ListePreparationsDAO extends DAO<ListePreparations> {
 	
 	PreparedStatement prepare = null;
+	ListePreparations listePreparations = null;
+	
 	//nom des champs dans les tables 
 	private final String 	NOMPREPA 	= "nom_type_prepa";
 	private final String	DUREE 		= "duree";
@@ -57,13 +59,13 @@ public class ListePreparationsDAO extends DAO<ListePreparations> {
 	@Override
 	public ListePreparations find(int id) throws SQLException {
 		
-		ListePreparations listePreparations = null;
+		listePreparations = new ListePreparations();
 		
-		String requetePrepare = "select sp.id_rec, tp.nom_type_prepa, sp.duree, ud.nom_unite_duree, sp.duree_second" + 
-				"from se_prepare sp" + 
-				"left join type_prepa tp on sp.id_type_prepa = tp.id_type_prepa" + 
-				"left join unite_duree ud on sp.id_unite_duree = ud.id_unite_duree" + 
-				"where id_rec=?;";
+		String requetePrepare = "SELECT sp.id_rec, tp.nom_type_prepa, sp.duree, ud.nom_unite_duree, sp.duree_second "
+								+ "FROM se_prepare sp "
+								+ "LEFT JOIN type_prepa tp ON sp.id_type_prepa = tp.id_type_prepa "
+								+ "LEFT JOIN unite_duree ud ON sp.id_unite_duree = ud.id_unite_duree "
+								+ "WHERE id_rec=?;";
 		
 		try {
 			

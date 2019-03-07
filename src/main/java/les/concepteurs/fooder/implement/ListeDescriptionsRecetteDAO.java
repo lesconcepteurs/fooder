@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import les.concepteurs.fooder.dao.DAO;
 import les.concepteurs.fooder.metier.Description;
@@ -12,6 +13,7 @@ import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
 public class ListeDescriptionsRecetteDAO extends DAO<ListeDescriptionsRecette> {
 
 	PreparedStatement prepare = null;
+	ListeDescriptionsRecette listeDescriptionsRecette = null;
 	
 	public ListeDescriptionsRecetteDAO(Connection conn) {
 		super(conn);
@@ -38,7 +40,7 @@ public class ListeDescriptionsRecetteDAO extends DAO<ListeDescriptionsRecette> {
 	@Override
 	public ListeDescriptionsRecette find(int id) throws SQLException {
 		
-		ListeDescriptionsRecette listeDescriptionsRecette = null;
+		listeDescriptionsRecette = new ListeDescriptionsRecette();
 		
 		try {
 			
@@ -50,12 +52,16 @@ public class ListeDescriptionsRecetteDAO extends DAO<ListeDescriptionsRecette> {
 			
 			ResultSet result = prepare.executeQuery();
 			
+			int i = 0;
 			while (result.next()) {
 				
-				Description desc = new Description();
-				desc.setIdDesc(id);
-				desc.setIdRec(result.getInt("ID_REC"));
-				desc.setTextDesc(result.getString("TEXT_DESC"));
+				
+				i++;
+				System.out.println(i);
+				
+				Description desc = new Description(result.getInt("ID_DESC"), result.getInt("ID_REC"), result.getString("TEXT_DESC"));
+				
+				System.out.println(desc);
 				
 				listeDescriptionsRecette.add(desc);
 				

@@ -61,8 +61,6 @@ public class RecetteDAO extends DAO<Recette> {
 					+ "WHERE r.id_rec=?");
 			prepare.setInt(1, id);
 			
-			System.out.println(prepare);
-
 			ResultSet result = prepare.executeQuery();
 						
 			while (result.next()) {
@@ -76,14 +74,9 @@ public class RecetteDAO extends DAO<Recette> {
 				String 	complementRec = result.getString("COMPLEMENT_REC");
 				boolean selPoivre = (result.getInt("SEL_POIVRE") == 1 ) ?  true : false;
 				ListeDenrees listeDenrees = new ListeDenreesDAO(connect).find(idRec);
-				ListePreparations listePreparations = new ListePreparations();
+				ListePreparations listePreparations = new ListePreparationsDAO(connect).find(idRec);
 				
-				recette = new Recette(idRec, themeRec, typeRec, nomRec, descRec, selPoivre, photoRec, complementRec, listeDenrees, listePreparations);
-				
-//				recette = new Recette();
-//				recette.setIdRec(result.getInt("id_rec"));
-//				recette.setNomRec(result.getString("NOM_REC"));
-				
+				recette = new Recette(idRec, themeRec, typeRec, nomRec, descRec, selPoivre, photoRec, complementRec, listeDenrees, listePreparations);				
 				
 			}			
 			

@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.dao.DAOConnect;
+import les.concepteurs.fooder.implement.ListeDescriptionsRecetteDAO;
 import les.concepteurs.fooder.implement.RecetteDAO;
+import les.concepteurs.fooder.metier.Description;
+import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
 import les.concepteurs.fooder.metier.Recette;
 
 /**
@@ -31,7 +34,27 @@ public class ListeRecettes extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+//		Description desc1 = new Description(1, 2, "djhldsqjhf");
+//		Description desc2 = new Description(2, 2, "iuytituy");
+//		Description desc3 = new Description(3, 2, "5354qds");
+//		
+//		ListeDescriptionsRecette ldr = new ListeDescriptionsRecette();
+//		ldr.add(desc1);
+//		ldr.add(desc2);
+//		ldr.add(desc3);
+//		
+//		for (Description desc : ldr) {
+//			System.out.println(desc);
+//		}
+		
+		
+		try {
+			ListeDescriptionsRecette ing = new ListeDescriptionsRecetteDAO(DAOConnect.getConnexion()).find(2);
+			System.out.println("+++++"+ing);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		response.setContentType("text/html");
 	    response.setCharacterEncoding( "UTF-8" );

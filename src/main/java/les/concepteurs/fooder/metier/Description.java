@@ -53,10 +53,7 @@ public class Description {
 	public String toString() {
 		return "Description [idDesc=" + idDesc 
 						+ ", idRec=" + idRec 
-						+ ", textDesc=" + textDesc 
-						+ ", getIdDesc()="+ getIdDesc() 
-						+ ", getIdRec()=" + getIdRec() 
-						+ ", getTextDesc()=" + getTextDesc() + "]";
+						+ ", textDesc=" + textDesc + "]";
 	}
 
 

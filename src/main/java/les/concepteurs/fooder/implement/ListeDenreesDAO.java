@@ -38,7 +38,7 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 	@Override
 	public ListeDenrees find(int id) throws SQLException {
 		
-		ListeDenrees listeDenrees = null;
+		ListeDenrees listeDenrees = new ListeDenrees();
 		
 		try {
 			
