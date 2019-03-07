@@ -16,25 +16,29 @@ public class DAOConnect {
 	private static Connection connect;
 
 	//Infos de connexion
-//	private String url 	= "jdbc:oracle:thin:@localhost:1521:XE";
-	private String url 	= "jdbc:mysql:@localhost:3306/fooder";
+//	private String url 	= "jdbc:oracle:thin:@localhost:1521:XE"; // for OracleDB 
+	private String url 	= "jdbc:mysql://localhost:3306/fooder";
 	private String user = "fooder";
 	private String pwd  = "fooderpw";
 	
 	   
 	//Constructeur privé
 	private DAOConnect(){
-	  try {
-		  
-		//ODBC ===> connect = DriverManager.getConnection(url, user, pwd);  
-	    connect = DriverManager.getConnection(url +"?user="+ user +"&password="+ pwd
-	    		+ "&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC");
-	    
-	  } catch (SQLException e) {
-	     e.printStackTrace();
-	  }
+		
+		String infoConnect = url +"?user="+ user +"&password="+ pwd
+	    						 +"&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+		
+		try {
+			  
+			//ODBC ===> connect = DriverManager.getConnection(url, user, pwd);  // for OracleDB
+		    connect = DriverManager.getConnection(infoConnect);
+		    
+		} catch (SQLException e) {
+		     e.printStackTrace();
+		}
+		
 	}
-	   
+		   
 	/**
 	 * Methode qui retourne l'instance ou va la creer si elle n'existe pas
 	 * @return Connection
