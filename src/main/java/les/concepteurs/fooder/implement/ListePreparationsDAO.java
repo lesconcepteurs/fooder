@@ -59,10 +59,10 @@ public class ListePreparationsDAO extends DAO<ListePreparations> {
 		
 		ListePreparations listePreparations = null;
 		
-		String requetePrepare = "select sp.id_rec, tp.nom_type_prepa, sp.duree, ud.nom_unite_duree, sp.duree_second \r\n" + 
-				"from se_prepare sp \r\n" + 
-				"left join type_prepa tp on sp.id_type_prepa = tp.id_type_prepa\r\n" + 
-				"left join unite_duree ud on sp.id_unite_duree = ud.id_unite_duree\r\n" + 
+		String requetePrepare = "select sp.id_rec, tp.nom_type_prepa, sp.duree, ud.nom_unite_duree, sp.duree_second" + 
+				"from se_prepare sp" + 
+				"left join type_prepa tp on sp.id_type_prepa = tp.id_type_prepa" + 
+				"left join unite_duree ud on sp.id_unite_duree = ud.id_unite_duree" + 
 				"where id_rec=?;";
 		
 		try {

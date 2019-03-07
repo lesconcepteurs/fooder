@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.dao.DAOConnect;
-import les.concepteurs.fooder.implement.IngredientDAO;
-import les.concepteurs.fooder.metier.Ingredient;
+import les.concepteurs.fooder.implement.RecetteDAO;
+import les.concepteurs.fooder.metier.Recette;
 
 /**
  * Servlet implementation class ListeRecettes
@@ -42,13 +42,12 @@ public class ListeRecettes extends HttpServlet {
 	}
 
 	private void methodeTest(PrintWriter out) {
-		Ingredient ing = null;
+		Recette recette = null;
 		
 		try {
-			 ing = new IngredientDAO(DAOConnect.getConnexion()).find(3);
+			recette = new RecetteDAO(DAOConnect.getConnexion()).find(1);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -61,7 +60,7 @@ public class ListeRecettes extends HttpServlet {
 	    out.println("<body>");
 	    out.println("<h1>Page de test</h1>");
 	    out.println("<h2>ServLet utilisée : testServLet</h2>");
-	    out.println("<p><b>Object from DAO (toString) :</b><br/><br /> "+ing+"</p>");
+	    out.println("<p><b>Object from DAO (toString) :</b><br/><br /> "+recette+"</p>");
 	    out.println("</body>");
 	    out.println("</html>");
 		
