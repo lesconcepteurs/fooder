@@ -54,19 +54,14 @@ public class RecetteDAO extends DAO<Recette> {
 		try {
 								
 			prepare = connect.prepareStatement(
-					"select distinct "
-					+ "r.ID_REC,"
-					+ "r.NOM_REC,"
-					+ "r.PHOTO_REC, "
-					+ "r.COMPLEMENT_REC, "
-					+ "r.SEL_POIVRE,"
-					+ "tr.NOM_TYPER,"
-					+ "th.NOM_THEME "
-					+ "FROM recette  r, type_recette tr, THEME_RECETTE th "
-					+ "WHERE r.id_rec=? "
-					+ "  AND tr.ID_TYPER = r.ID_TYPER "
-					+ "  AND th.ID_THEME = r.ID_THEME");
+					"SELECT DISTINCT r.id_rec, r.nom_rec, r.photo_rec, r.complement_rec, r.sel_poivre, tr.nom_typer, th.nom_theme "
+					+ "FROM recette r "
+					+ "LEFT JOIN type_recette tr  ON tr.id_typer = r.id_typer "
+					+ "LEFT JOIN theme_recette th ON th.id_theme = r.id_theme "
+					+ "WHERE r.id_rec=?");
 			prepare.setInt(1, id);
+			
+			System.out.println(prepare);
 
 			ResultSet result = prepare.executeQuery();
 						
@@ -84,6 +79,11 @@ public class RecetteDAO extends DAO<Recette> {
 				ListePreparations listePreparations = new ListePreparations();
 				
 				recette = new Recette(idRec, themeRec, typeRec, nomRec, descRec, selPoivre, photoRec, complementRec, listeDenrees, listePreparations);
+				
+//				recette = new Recette();
+//				recette.setIdRec(result.getInt("id_rec"));
+//				recette.setNomRec(result.getString("NOM_REC"));
+				
 				
 			}			
 			
