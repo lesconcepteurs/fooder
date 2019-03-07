@@ -2,8 +2,6 @@ package les.concepteurs.fooder.app;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -13,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.dao.DAOConnect;
 import les.concepteurs.fooder.implement.IngredientDAO;
-import les.concepteurs.fooder.implement.RecetteDAO;
 import les.concepteurs.fooder.metier.Ingredient;
-import les.concepteurs.fooder.metier.Recette;
 
 /**
  * Servlet implementation class ListeRecettes
@@ -63,7 +59,9 @@ public class ListeRecettes extends HttpServlet {
 	    out.println("<title>Test</title>");
 	    out.println("</head>");
 	    out.println("<body>");
-	    out.println("<p>Ingredient (toString) : "+ing+"</p>");
+	    out.println("<h1>Page de test</h1>");
+	    out.println("<h2>ServLet utilisée : testServLet</h2>");
+	    out.println("<p><b>Object from DAO (toString) :</b><br/><br /> "+ing+"</p>");
 	    out.println("</body>");
 	    out.println("</html>");
 		
