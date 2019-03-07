@@ -51,7 +51,6 @@ public class TestRecettes extends HttpServlet {
 		
 		try {
 			ListeDescriptionsRecette ing = new ListeDescriptionsRecetteDAO(DAOConnect.getConnexion()).find(2);
-			System.out.println("+++++"+ing);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -15,7 +15,6 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 
 	public ListeRecettesDAO(Connection conn) {
 		super(conn);
-		
 	}
 
 	@Override

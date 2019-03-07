@@ -50,9 +50,7 @@ public class RecetteDAO extends DAO<Recette> {
 	public Recette find(int id) throws SQLException {
 		
 		Recette recette = null;
-		
-		try {
-								
+										
 			prepare = connect.prepareStatement(
 					"SELECT DISTINCT r.id_rec, r.nom_rec, r.photo_rec, r.complement_rec, r.sel_poivre, tr.nom_typer, th.nom_theme "
 					+ "FROM recette r "
@@ -80,11 +78,9 @@ public class RecetteDAO extends DAO<Recette> {
 				
 			}			
 			
-		} catch(SQLException e) {
-			
-			e.printStackTrace();
-			
-		}
+
+			prepare.close();
+
 		
 		return recette;
 	}
