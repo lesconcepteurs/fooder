@@ -27,51 +27,62 @@ public class ControleurFacade extends HttpServlet{
 	private RequestDispatcher disp;
 	
 	/**
-	 * Methode qui va recuperer l'url (A  partir du chemin relatif A  la servlet, 
+	 * Methode doGet qui recupere l'url (A partir du chemin relatif a la servlet, 
 	 * cad le chemin apres l'urlPattern de la servlet)
-	 * et rediriger vers une autre servlet en fonction du path.
+	 * et redirige vers une sous servlet selon le path.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String path = request.getPathInfo();
 		
-		System.out.println("Je suis dans le Controleur de facade. Path= "+path);
-		System.out.println("Je suis dans le Controleur de facade. Contexte path= "+ request.getContextPath());
+		System.out.println("Dans le doGet de la servlet Controleur de facade.");
+		System.out.println("Context path= "+ request.getContextPath());
+		System.out.println("Path= "+path);
 		
-		if (path == null || path.equals("/"))		doAccueil(request, response);
-		else if (path.equals("/listeRecettes"))		doListeRecettes(request, response);
-		else {
-			doAccueil(request, response);
-		}
-		
+		if (path == null || path.equals("/")) 		doAccueilRecette(request, response);
+		else if (path.equals("/hello"))				doHello(request, response);
+		else 										doAccueilRecette(request, response);
+				
+		System.out.println("fin du doGet de la servlet Controleur facade");
 	}
 
 
 	/**
-	 * Methode qui renvoie vers la page index.jsp
+	 * Methode qui renvoie vers la servlet AccueilRecette
 	 * @param request
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void doAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		disp = request.getRequestDispatcher("/index.jsp");
+	private void doAccueilRecette(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("dans doAccueilRecette");
+		
+		String path = request.getPathInfo();
+		//On ajoute au path l'urlPattern de la servlet cible
+		path = path + "accueilRecette";
+		
+		System.out.println("path : " + path);
+		
+		disp = request.getRequestDispatcher(path);
 		disp.forward(request, response);
 		
 	}
 	
 	/**
-	 * Methode qui renvoie vers la page de liste des recettes
+	 * Methode de test
 	 * @param request
 	 * @param response
-	 * @throws IOException 
-	 * @throws ServletException 
+	 * @throws ServletException
+	 * @throws IOException
 	 */
-	private void doListeRecettes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		disp = request.getRequestDispatcher("/ListeRecettes/");
+	private void doHello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doHello");
+		String path = request.getContextPath() + "/hello/";
+		System.out.println("context path hello : " +path);
+		System.out.println("contexte path info : "+ request.getPathInfo());
+		disp = request.getRequestDispatcher(request.getPathInfo());
 		disp.forward(request, response);
 		
 	}
-	
-	
+		
 }
