@@ -10,9 +10,19 @@
  	<description></description>
  	<servlet-class>les.concepteurs.fooder.controller.Hello</servlet-class>
  </servlet>
+ <servlet>
+ 	<servlet-name>AccueilRecette</servlet-name>
+ 	<display-name>AccueilRecette</display-name>
+ 	<description></description>
+ 	<servlet-class>les.concepteurs.fooder.controller.AccueilRecette</servlet-class>
+ </servlet>
  <servlet-mapping>
  	<servlet-name>Hello</servlet-name>
  	<url-pattern>/hello</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>AccueilRecette</servlet-name>
+ 	<url-pattern>/accueilRecette</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
  	<welcome-file>facade/</welcome-file>
