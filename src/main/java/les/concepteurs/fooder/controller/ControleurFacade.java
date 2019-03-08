@@ -76,7 +76,8 @@ public class ControleurFacade extends HttpServlet{
 		System.out.println("doHello");
 		String path = request.getContextPath() + "/hello/";
 		System.out.println("context path hello : " +path);
-		disp = request.getRequestDispatcher("/Hello/");
+		System.out.println("contexte path info : "+ request.getPathInfo());
+		disp = request.getRequestDispatcher(request.getPathInfo());
 		disp.forward(request, response);
 		
 	}
