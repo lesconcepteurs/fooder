@@ -4,6 +4,16 @@
 
 <web-app>
  <display-name>FooderWebApp</display-name>
+  <servlet>
+  	<servlet-name>TestRecettes</servlet-name>
+  	<display-name>TestRecettes</display-name>
+  	<description>Traitement de la liste des recettes</description>
+  	<servlet-class>les.concepteurs.fooder.app.TestRecettes</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TestRecettes</servlet-name>
+  	<url-pattern>/TestRecettes</url-pattern>
+  </servlet-mapping>
  <servlet>
  	<servlet-name>Hello</servlet-name>
  	<display-name>Hello</display-name>
