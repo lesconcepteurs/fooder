@@ -27,23 +27,28 @@ public class ControleurFacade extends HttpServlet{
 	private RequestDispatcher disp;
 	
 	/**
-	 * Methode qui va recuperer l'url (A  partir du chemin relatif A  la servlet, 
+	 * Methode qui va recuperer l'url (Aï¿½ partir du chemin relatif Aï¿½ la servlet, 
 	 * cad le chemin apres l'urlPattern de la servlet)
 	 * et rediriger vers une autre servlet en fonction du path.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String path = request.getPathInfo();
-		
 		System.out.println("Je suis dans le Controleur de facade. Path= "+path);
 		System.out.println("Je suis dans le Controleur de facade. Contexte path= "+ request.getContextPath());
 		
-		if (path == null || path.equals("/"))		doAccueil(request, response);
+		if (path == null || path.equals("/")) {
+			System.out.println("dans le if : path.equals : / => doAccueil");
+			doAccueil(request, response);
+		}
+		else if (path.equals("/hello"))				doHello(request, response);
 		else if (path.equals("/listeRecettes"))		doListeRecettes(request, response);
 		else {
+			System.out.println("dans le else : path.equals : autre chose. =>doAccueil");
 			doAccueil(request, response);
 		}
 		
+		System.out.println("fin controleur facade");
 	}
 
 
@@ -55,7 +60,23 @@ public class ControleurFacade extends HttpServlet{
 	 * @throws IOException
 	 */
 	private void doAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		disp = request.getRequestDispatcher("/index.jsp");
+		disp = request.getRequestDispatcher("/indexxx.jsp");
+		disp.forward(request, response);
+		
+	}
+	
+	/**
+	 * Methode qui renvoie vers la page index.jsp
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void doHello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doHello");
+		String path = request.getContextPath() + "/hello/";
+		System.out.println("context path hello : " +path);
+		disp = request.getRequestDispatcher("/Hello/");
 		disp.forward(request, response);
 		
 	}
