@@ -43,7 +43,9 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 	
 	public ListeRecettes findAll() throws SQLException {
 		
-		ListeRecettes listeRecettes = null;
+		ListeRecettes listeRecettes = new ListeRecettes();
+		
+		listeRecettes = null;
 		
 		prepare = connect.prepareStatement("select "
 				+ "id_rec, "
