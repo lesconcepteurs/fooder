@@ -55,7 +55,6 @@ public class ListePreparationsDAO extends DAO<ListePreparations> {
 	 * puis crée les objets Preparation.
 	 * puis les ajoute à ListePreparation (ArrayList) 
 	 */
-	@SuppressWarnings("null")
 	@Override
 	public ListePreparations find(int id) throws SQLException {
 		

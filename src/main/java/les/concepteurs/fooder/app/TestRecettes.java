@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import les.concepteurs.fooder.dao.DAOConnect;
 import les.concepteurs.fooder.implement.ListeDescriptionsRecetteDAO;
 import les.concepteurs.fooder.implement.RecetteDAO;
-import les.concepteurs.fooder.metier.Description;
 import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
 import les.concepteurs.fooder.metier.Recette;
 

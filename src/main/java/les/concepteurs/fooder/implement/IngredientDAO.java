@@ -7,10 +7,6 @@ import java.sql.SQLException;
 
 import les.concepteurs.fooder.dao.DAO;
 import les.concepteurs.fooder.metier.Ingredient;
-import les.concepteurs.fooder.metier.ListeDenrees;
-import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
-import les.concepteurs.fooder.metier.ListePreparations;
-import les.concepteurs.fooder.metier.Recette;
 
 public class IngredientDAO extends DAO<Ingredient>  {
 	

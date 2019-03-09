@@ -1,7 +1,6 @@
 package les.concepteurs.fooder.metier;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Arraylist de Description (de recettes)
