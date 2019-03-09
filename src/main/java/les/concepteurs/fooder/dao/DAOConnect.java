@@ -17,6 +17,7 @@ public class DAOConnect {
 
 	//Infos de connexion
 //	private String url 	= "jdbc:oracle:thin:@localhost:1521:XE"; // for OracleDB 
+	
 	private String url 	= "jdbc:mysql://localhost:3306/fooder";
 	private String user = "fooder";
 	private String pwd  = "fooderpw";
