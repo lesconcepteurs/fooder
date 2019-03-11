@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.dao.DAOConnect;
-import les.concepteurs.fooder.implement.ListeDescriptionsRecetteDAO;
 import les.concepteurs.fooder.implement.RecetteDAO;
-import les.concepteurs.fooder.metier.ListeDescriptionsRecette;
 import les.concepteurs.fooder.metier.Recette;
 
 /**
@@ -46,13 +44,6 @@ public class TestRecettes extends HttpServlet {
 //		for (Description desc : ldr) {
 //			System.out.println(desc);
 //		}
-		
-		
-		try {
-			ListeDescriptionsRecette ing = new ListeDescriptionsRecetteDAO(DAOConnect.getConnexion()).find(2);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		response.setContentType("text/html");
 	    response.setCharacterEncoding( "UTF-8" );
