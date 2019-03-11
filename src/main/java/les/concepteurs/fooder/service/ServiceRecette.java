@@ -32,6 +32,9 @@ public class ServiceRecette {
 			e.printStackTrace();
 		}
 		
+		//controle console
+		System.out.println("je suis bien dans ServiceRecettes");
+		
 		return listeRecettes;
 	}
 }

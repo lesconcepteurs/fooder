@@ -45,17 +45,17 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 		
 		ListeRecettes listeRecettes = new ListeRecettes();
 				
-		prepare = connect.prepareStatement("select "
-				+ "id_rec, "
-				+ "nom_rec, "
-				+ "sel_poivre, "
-				+ "photo_rec, "
-				+ "complement_rec, "
-				+ "nom_theme, "
-				+ "nom_typer" 
-				+ "from recette" 
-				+ "left join theme_recette on recette.id_theme = theme_recette.id_theme" 
-				+ "left join type_recette on recette.id_typer = type_recette.id_typer;");
+		prepare = connect.prepareStatement("SELECT " + 
+				"id_rec, " + 
+				"nom_rec, " + 
+				"sel_poivre, " + 
+				"photo_rec, " + 
+				"complement_rec, " + 
+				"nom_theme, " + 
+				"nom_typer " + 
+				"FROM recette " + 
+				"LEFT JOIN theme_recette ON recette.id_theme = theme_recette.id_theme " + 
+				"LEFT JOIN type_recette ON recette.id_typer = type_recette.id_typer");
 		
 		ResultSet result = prepare.executeQuery();
 		
