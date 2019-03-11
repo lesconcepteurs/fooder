@@ -33,7 +33,7 @@ public class DAOConnect {
 			  
 			//ODBC ===> connect = DriverManager.getConnection(url, user, pwd);  // for OracleDB
 		    connect = DriverManager.getConnection(infoConnect);
-		    System.out.println("Database connecion success");
+		    System.out.println("Database connection success");
 		    
 		} catch (SQLException e) {
 			System.out.println("Database connection has failed!");
