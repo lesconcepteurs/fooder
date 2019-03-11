@@ -1,11 +1,16 @@
 package les.concepteurs.fooder.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import les.concepteurs.fooder.metier.ListeRecettes;
+import les.concepteurs.fooder.service.ServiceRecette;
 
 /**
  * Servlet implementation class AccueilRecette
@@ -26,6 +31,21 @@ public class AccueilRecette extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("dans le doGet de la servlet AccueilRecette");
 		System.out.println("path : " + request.getPathInfo());
+		
+		// création d'un objet ServiceRecette qui fera appel à ListeRecettesDAO
+		ServiceRecette servRec = new ServiceRecette();
+		ListeRecettes listeRecettes = null;
+		listeRecettes = servRec.recupListeRecettes();
+		
+		//controle 
+		System.out.println(listeRecettes);
+		
+		//set du request
+		request.setAttribute("listeRecettes", listeRecettes);
+		
+		//renvoi vers la jsp d'accueilRecettes
+		RequestDispatcher disp = request.getRequestDispatcher("/vue/accueilRecettes.jsp");
+		disp.forward(request, response);
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
