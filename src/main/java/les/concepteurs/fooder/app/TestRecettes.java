@@ -48,11 +48,7 @@ public class TestRecettes extends HttpServlet {
 //		}
 		
 		
-		try {
-			ListeDescriptionsRecette ing = new ListeDescriptionsRecetteDAO(DAOConnect.getConnexion()).find(2);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		
 		response.setContentType("text/html");
 	    response.setCharacterEncoding( "UTF-8" );
