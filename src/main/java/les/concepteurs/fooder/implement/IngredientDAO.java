@@ -40,7 +40,7 @@ public class IngredientDAO extends DAO<Ingredient>  {
 		Ingredient ingredient = null;
 								
 		prepare = connect.prepareStatement(
-				"SELECT DISTINCT I.ID_ING, I.ID_RAYON, I.NOM_ING, I.PHOTO_ING, R.NOM as NOM_RAYON "
+				"SELECT DISTINCT I.ID_ING, I.ID_RAYON, I.NOM_ING, I.PHOTO_ING, R.NOM_RAYON "
 				+ "FROM INGREDIENT I, RAYON R "
 				+ "WHERE I.ID_ING = ? "
 				+ "  AND R.ID_RAYON = I.ID_RAYON");
