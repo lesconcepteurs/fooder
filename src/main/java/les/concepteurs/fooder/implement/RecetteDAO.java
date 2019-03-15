@@ -79,7 +79,7 @@ public class RecetteDAO extends DAO<Recette> {
 			}			
 			
 
-			prepare.close();
+		
 
 		
 		return recette;

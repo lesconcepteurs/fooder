@@ -47,7 +47,6 @@ public class AccueilRecette extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("/vue/accueilRecettes.jsp");
 		disp.forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

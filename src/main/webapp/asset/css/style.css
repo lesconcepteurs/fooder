@@ -1,0 +1,332 @@
+body{
+	background-color:white;
+	
+	
+	
+}
+/*navbar du haut gris foncé*/
+.nav{
+	width: 100%;
+	height: 80px;
+	padding: 10px 0px;
+	margin: 0px;
+	background: grey;
+	text-align: center;
+	box-shadow: 0px 1px 10px black;
+/*code pour nav bar fixe*/
+	top: 0px;
+}
+
+	
+
+/*menu navbar*/
+.nav li{
+	display: inline-block;
+	width: 120px;
+	height: 70px;
+	background: -webkit-linear-gradient(left, lime, #b8f9ba);
+	font-family: calibri bold; 
+	margin-right: 10px;
+	padding: 4px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 60px;
+	line-height: 60px;
+	font-size: 20px;
+}
+
+/*bouton fooder inactif dans navbar haute*/
+.nav li:first-child{
+	position: absolute;
+	left: 10px;
+	background: grey;
+	color: lime;
+	font-size: 60px;
+	width: 25%;
+	font-weight: bold;
+}
+/*changement de couleur des boutons quand survol souris*/
+ul li:hover{
+	background: lightgrey;
+	color: white;
+	font-weight: bold;
+}
+/*container qui permet le repositionnement du caroussel*/
+	.box{
+		margin-top: 200px;
+		width: 500px;
+		height: 600px;
+		margin: 50px auto;
+		
+}
+/*Label fooder caché en mode web*/
+label {
+	visibility: hidden;
+}
+
+/*slogan bas de page*/
+p {
+	font-family: MV Boli, ink free, calibri;
+	font-size: 50px;
+	text-align: center;
+	color: #f98304;
+	padding-bottom: 100px;
+}
+
+
+/*Code pour responsive si l'ecran est inferieur Ã  1000px*/
+@media screen and (max-width: 1000px){
+
+	.box{
+		float: center;
+		width: 100%;
+		height: 100%;
+		margin-top: 60px ;
+		margin-bottom: 0px;
+
+
+	}
+	.nav{
+		text-align: center;
+		padding: auto;
+		border: 0px;
+		border-color: grey;
+		border-radius: 10px;
+	}
+
+/*bouton  fooder caché en haut en reponsive*/
+	.nav li:first-child{
+		visibility: hidden;
+		width: 120%;
+		height: 50%;
+		padding: auto;
+		margin-top: 0px;
+		position: relative;
+		left: 0px;
+	}
+
+	.nav li{
+		padding: 10px;
+		width: 20%;
+		height: 50px; 
+		margin: 5px;
+		text-align: center;
+		border-bottom: 5px  black;
+	}
+
+	/*3 boutons du haut entree plat dessert*/
+	/*.nav li:first-child{
+		position:absolute;
+		background: green;
+		color: lime;
+		font-size: 60px;
+		width: 25%;
+		font-weight: bold;
+	}*/
+	/*positionnement navbar du bas*/
+	.nav2{
+		text-align: center;
+		padding: 20px;
+		margin: 5px;
+		border: 5px;
+		border-color: green;
+		border-radius: 10px;
+	}
+
+	/*traîtement des icones dans boutons*/
+	.nav2 li{		
+		padding: 10px;
+		padding-top: 10px;
+		width: 20%;
+		margin: 5px;
+		text-align: justify-all;
+		border-bottom: 5px  black;
+	}
+	/*label fooder orange du bas de page */
+	label{
+		visibility: visible;
+		position: absolute;
+		padding: 10px;
+		display: inline-block;
+		text-align: center;
+		margin-left: 25%;
+		margin-top: 20px;
+		border-radius: 10px;
+		background: #f98304;
+		color: white;
+		font-size: 80px;
+		width: 45%;
+		font-weight: bold;
+	}
+	/*paragraphe slogan bas de page*/
+	p {
+	font-family: MV Boli, ink free, calibri;
+	font-size: 40px;
+	text-align: center;
+	color: #f98304;
+	margin-top: 150px;
+}
+	
+}/*fin du responsive*/
+
+
+/*carousel*/	
+.carousel {
+  position: relative;
+  width: 500px;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.carousel:hover .slide:after,
+.carousel:hover .counter,
+.carousel:hover .slide:before {
+  opacity: 1;
+}
+.slide {
+  float: right;
+  position: absolute;
+  z-index: 1;
+  width: 500px;
+  height: 600px;
+  background-color: #eee;
+  text-align: center;
+  transition: opacity 0.4s;
+  opacity: 1;
+}
+.slide:before {
+  content: attr(annot);
+  display: block;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  color: #444744;
+  font-size: 30px;
+  font-weight: 300;
+  z-index: 12;
+  opacity: 0;
+  transition: opacity 0.3s;
+  text-shadow: 0 0 1px #000;
+}
+.slide:after {
+  content: attr(slide);
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+  height: 80px;
+  opacity: 0;
+  background-image: linear-gradient(transparent, rgba(0,0,0,0.5));
+  text-align: left;
+  text-indent: 549px;
+  line-height: 101px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 0 1px #000;
+}
+
+
+}
+.counter {
+  position: absolute;
+  bottom: 20px;
+  right: 1px;
+  height: 20px;
+  width: 60px;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  line-height: 21px;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.faux-ui-facia {
+  top: 0;
+  right: 0;
+  float: right;
+  position: absolute;
+  margin-top: 0;
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+ 
+}
+.faux-ui-facia:checked {
+  z-index: 8;
+}
+.faux-ui-facia:checked + .slide {
+  opacity: 0;
+}
+.faux-ui-facia:checked:nth-child(1):checked {
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked {
+  float: left;
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked + .slide {
+  opacity: 1;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia {
+  float: left;
+  z-index: 8;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia + .slide {
+  opacity: 0;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia:checked {
+  z-index: 9;
+}
+.faux-ui-facia:nth-child(1):checked ~ .faux-ui-facia:checked + .slide {
+  opacity: 1;
+}
+/* --- Intro text --- */
+.intro {
+  padding: 80px 0 60px 0;
+  text-align: center;
+  color: #fff;
+  margin: auto;
+  width: 800px;
+}
+.intro .intro__title {
+  font-weight: 200;
+  font-size: 32px;
+  color: #fff;
+}
+.intro .intro__body {
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  opacity: 0.48;
+  padding: 0 160px;
+  margin: 0;
+}
+
+/*bloc 3 boutons bas */
+.box2{
+	position: relative;
+
+}
+
+/*traîtement des boutons du bas dans box2*/
+.nav2 li{
+		display: inline-block;
+		width: 120px;
+		height: 60px;
+		background: -webkit-linear-gradient(left, lime, #b8f9ba);
+		font-family: calibri; 
+		margin-right:24px;
+		margin-left: 0px;
+		padding-top:  4px;
+		border-radius: 10px;
+		box-shadow: 0px 1px 10px black;
+		text-align: center;
+		line-height: 60px;
+		font-size: 20px;
+	}
