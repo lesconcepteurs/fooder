@@ -40,20 +40,20 @@ public class IngredientDAO extends DAO<Ingredient>  {
 		Ingredient ingredient = null;
 								
 		prepare = connect.prepareStatement(
-				"SELECT DISTINCT I.ID_ING, I.ID_RAYON, I.NOM_ING, I.PHOTO_ING, R.NOM "
-				+ "FROM INGREDIENT I, RAYON R "
-				+ "WHERE I.ID_ING = ? "
-				+ "  AND R.ID_RAYON = I.ID_RAYON");
+				"SELECT DISTINCT i.id_ing, i.id_rayon, i.nom_ing, i.photo_ing, r.nom_rayon "
+				+ "FROM ingredient i, rayon r "
+				+ "WHERE i.id_ing = ? "
+				+ "  AND r.id_rayon = i.id_rayon");
 		prepare.setInt(1, id);
 
 		ResultSet result = prepare.executeQuery();
 					
 		while (result.next()) {
 				
-			int 	idIng = result.getInt("ID_ING");
-			String 	nomIng = result.getString("NOM_ING");
-			String 	photoIng = result.getString("PHOTO_ING");
-			String 	nomRayon = result.getString("NOM");
+			int 	idIng = result.getInt("id_ing");
+			String 	nomIng = result.getString("nom_ing");
+			String 	photoIng = result.getString("photo_ing");
+			String 	nomRayon = result.getString("nom_rayon");
 			
 			ingredient = new Ingredient(idIng, nomIng, photoIng, nomRayon);
 			
