@@ -1,8 +1,23 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@SuppressWarnings("unused")
+@Entity
+@Table(name = "rayon")
 public class Rayon {
 	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_rayon")
 	private int idRayon;
+    
+    @Column(name = "nom_rayon")
 	private String nomRayon;
 	
 	/**
