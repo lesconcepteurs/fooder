@@ -6,12 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import les.concepteurs.fooder.dao.DAO;
+import les.concepteurs.fooder.metier.Description;
 import les.concepteurs.fooder.metier.ListeRecettes;
 import les.concepteurs.fooder.metier.Recette;
 
 public class ListeRecettesDAO extends DAO<ListeRecettes>{
 	
 	PreparedStatement prepare = null;
+	
+	private final String ID_REC = "id_rec";
+	private final String NOM_THEME = "nom_theme";
+	private final String NOM_TYPER = "nom_typer";
+	private final String NOM_REC = "nom_rec";
+	private final String PHOTO_REC = "photo_rec";
+	private final String COMPL_REC = "complement_rec";
+	
 
 	public ListeRecettesDAO(Connection conn) {
 		super(conn);
@@ -61,15 +70,8 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 		
 		while (result.next()) {
 			
-			boolean isSelPoivre;
-			int selPoivre = result.getInt("sel_poivre");
-			
-			if (selPoivre == 1) {
-				isSelPoivre = true;
-			}
-			else {
-				isSelPoivre = false;
-			}
+			//Convertion de l'int de la base de données en booleen									
+			boolean isSelPoivre = this.convertIntToBoolean(result.getInt("sel_poivre"));
 			
 			Recette rec = new Recette(result.getInt("id_rec"), 
 					result.getString("nom_theme"),
@@ -87,6 +89,87 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 			
 		return listeRecettes;
 				
+	}
+	
+	/**
+	 * Methode de recherche des recettes en base de données selon le type de recette envoyé en paramètres.
+	 * @param (int) idType
+	 * @return (ListeRecettes) listeRecettes
+	 * @throws SQLException
+	 */
+	public ListeRecettes findType(int idType) throws SQLException {
+		
+		ListeRecettes listeRecettes = new ListeRecettes();
+		
+		prepare = connect.prepareStatement("SELECT " + 
+				"id_rec, " +
+				"nom_rec, " +
+				"sel_poivre, " +
+				"photo_rec, " +
+				"complement_rec, " +
+				"nom_theme, " +
+				"nom_typer " +
+				"FROM recette " +
+				"LEFT JOIN theme_recette ON recette.id_theme = theme_recette.id_theme " +
+				"JOIN type_recette ON recette.id_typer = type_recette.id_typer " +
+				"AND type_recette.id_typer = "+ idType				
+				);	
+				
+		ResultSet result = prepare.executeQuery();
+		
+		while (result.next()) {
+			
+			//Convertion de l'int de la base de données en booleen									
+			boolean isSelPoivre = this.convertIntToBoolean(result.getInt("sel_poivre"));
+									
+			// création d'un Bean Recette
+			Recette recette = new Recette();
+			
+			// recup de l'id recette
+			int idRec = result.getInt(ID_REC);
+			
+			// Set du Bean
+			recette.setIdRec(idRec);
+			recette.setThemeRec(result.getString(NOM_THEME));
+			recette.setTypeRec(result.getString(NOM_TYPER));
+			recette.setNomRec(result.getString(NOM_REC));
+			recette.setDescRec(new ListeDescriptionsRecetteDAO(connect).find(idRec));
+			recette.setSelPoivre(isSelPoivre);
+			recette.setPhotoRec(result.getString(PHOTO_REC));
+			recette.setComplementRec(result.getString(COMPL_REC));
+			recette.setDenrees(new ListeDenreesDAO(connect).find(idRec));			
+			recette.setListePrepa(new ListePreparationsDAO(connect).find(idRec));
+			
+			// ajout du bean à la liste de recettes
+			listeRecettes.add(recette);
+			
+		}
+		
+		return listeRecettes;
+	}
+
+	/**
+	 * Methode pour convertir un int en booleen. 
+	 * Si le int = 1, alors booleen = true
+	 * Sinon booleen = false
+	 * 
+	 * @param (int) intSelP
+	 * @return (boolean) isSelPoivre
+	 */
+	private boolean convertIntToBoolean(int intSelP) {
+		
+		boolean isSelPoivre;
+		
+		int selPoivre = intSelP;
+		
+		if (selPoivre == 1) {
+			isSelPoivre = true;
+		}
+		else {
+			isSelPoivre = false;
+		}
+		
+		return isSelPoivre;
 	}
 
 }
