@@ -91,6 +91,12 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 				
 	}
 	
+	/**
+	 * Methode de recherche des recettes en base de données selon le type de recette envoyé en paramètres.
+	 * @param (int) idType
+	 * @return (ListeRecettes) listeRecettes
+	 * @throws SQLException
+	 */
 	public ListeRecettes findType(int idType) throws SQLException {
 		
 		ListeRecettes listeRecettes = new ListeRecettes();
