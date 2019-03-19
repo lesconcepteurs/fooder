@@ -120,20 +120,13 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 		
 		while (result.next()) {
 			
-			//Externaliser dans une methode
-			boolean isSelPoivre;
-			int selPoivre = result.getInt("sel_poivre");
-			
-			if (selPoivre == 1) {
-				isSelPoivre = true;
-			}
-			else {
-				isSelPoivre = false;
-			}
-			
+			//Convertion de l'int de la base de données en booleen									
+			boolean isSelPoivre = this.convertIntToBoolean(result.getInt("sel_poivre"));
+									
 			// création d'un Bean Recette
 			Recette recette = new Recette();
 			
+			// recup de l'id recette
 			int idRec = result.getInt(ID_REC);
 			
 			// Set du Bean
@@ -154,6 +147,30 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 		}
 		
 		return listeRecettes;
+	}
+
+	/**
+	 * Methode pour convertir un int en booleen. 
+	 * Si le int = 1, alors booleen = true
+	 * Sinon booleen = false
+	 * 
+	 * @param (int) intSelP
+	 * @return (boolean) isSelPoivre
+	 */
+	private boolean convertIntToBoolean(int intSelP) {
+		
+		boolean isSelPoivre;
+		
+		int selPoivre = intSelP;
+		
+		if (selPoivre == 1) {
+			isSelPoivre = true;
+		}
+		else {
+			isSelPoivre = false;
+		}
+		
+		return isSelPoivre;
 	}
 
 }
