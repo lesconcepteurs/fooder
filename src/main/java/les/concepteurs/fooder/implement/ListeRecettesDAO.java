@@ -70,15 +70,8 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 		
 		while (result.next()) {
 			
-			boolean isSelPoivre;
-			int selPoivre = result.getInt("sel_poivre");
-			
-			if (selPoivre == 1) {
-				isSelPoivre = true;
-			}
-			else {
-				isSelPoivre = false;
-			}
+			//Convertion de l'int de la base de données en booleen									
+			boolean isSelPoivre = this.convertIntToBoolean(result.getInt("sel_poivre"));
 			
 			Recette rec = new Recette(result.getInt("id_rec"), 
 					result.getString("nom_theme"),
