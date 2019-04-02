@@ -1,67 +1,121 @@
 package les.concepteurs.fooder.implement;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
-import les.concepteurs.fooder.dao.DAO;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import les.concepteurs.fooder.dao.HibernateUtil;
+import les.concepteurs.fooder.dao.interfaceDAOHibernate;
 import les.concepteurs.fooder.metier.Ingredient;
 
-public class IngredientDAO extends DAO<Ingredient>  {
+/**
+ *  Classe de DAO pour les ingredients
+ * @author Philippe Cohen
+ * @see https://examples.javacodegeeks.com/enterprise-java/hibernate/hibernate-jpa-dao-example/
+ */
+public class IngredientDAO implements interfaceDAOHibernate<Ingredient, String>  {
 	
-	PreparedStatement prepare = null;
-
-	public IngredientDAO(Connection conn) {
-		super(conn);
+	private Transaction transaction;;
+    private Session session;
+	
+    
+    public IngredientDAO() {
+		super();
 	}
-
-	@Override
-	public boolean create(Ingredient obj) {
-		// TODO Auto-generated method stub
-		return false;
+    
+    /*
+     * Session & transaction 
+     */
+    
+    public Session openSession() {
+    	this.session = HibernateUtil.getSessionFactory().openSession();
+		return session;
+    }
+    
+    public Session openSessionTransaction() {
+    	this.session = HibernateUtil.getSessionFactory().openSession();
+    	this.transaction = session.beginTransaction();
+		return session;
+    }
+    
+    @SuppressWarnings("unused")
+	private static SessionFactory getSessionFactory() {
+        Configuration configuration = new Configuration().configure();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+        return sessionFactory;
+    }
+    
+    public void closeSession() {
+    	//this.session.close();
+    	System.out.println("On Ingredient closed : ");
+    }
+    
+    public void closeSessionTransaction() {
+    	this.transaction.commit();
+    	this.session.close();
+    }
+    
+    
+    
+    /*
+     * CRUD functions
+     */
+    
+    public void persist(Ingredient entity) {
+        getSession().save(entity);
+    }
+ 
+    public void update(Ingredient entity) {
+        getSession().update(entity);
+    }
+ 
+    public Ingredient findById(String id) {
+    	Ingredient ingredient = (Ingredient) getSession().get(Ingredient.class, Integer.parseInt(id));
+        return ingredient; 
+    }
+    
+    public Ingredient find(int id) {
+    	return findById(Integer.toString(id));
+    }
+ 
+    public void delete(Ingredient entity) {
+        getSession().delete(entity);
+    }
+ 
+    @SuppressWarnings("unchecked")
+    public List<Ingredient> findAll() {
+		List<Ingredient> ingredient = (List<Ingredient>) getSession().createQuery("from ingredient").list();
+        return ingredient;
+    }
+ 
+    public void deleteAll() {
+        List<Ingredient> entityList = findAll();
+        for (Ingredient entity : entityList) {
+            delete(entity);
+        }
+    }
+    
+    
+    /*
+     * Getters & Setters
+     */
+    
+    public Transaction getTransaction() {
+		return transaction;
 	}
-
-	@Override
-	public boolean delete(Ingredient obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public Session getSession() {
+		return session;
 	}
-
-	@Override
-	public boolean update(Ingredient obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setSession(Session session) {
+		this.session = session;
 	}
-
-	@Override
-	public Ingredient find(int id) throws SQLException {
-
-		Ingredient ingredient = null;
-								
-		prepare = connect.prepareStatement(
-				"SELECT DISTINCT i.id_ing, i.id_rayon, i.nom_ing, i.photo_ing, r.nom "
-				+ "FROM ingredient i, rayon r "
-				+ "WHERE i.id_ing = ? "
-				+ "  AND r.id_rayon = i.id_rayon");
-		prepare.setInt(1, id);
-
-		ResultSet result = prepare.executeQuery();
-					
-		while (result.next()) {
-				
-			int 	idIng = result.getInt("id_ing");
-			String 	nomIng = result.getString("nom_ing");
-			String 	photoIng = result.getString("photo_ing");
-			String 	nomRayon = result.getString("nom");
-			
-			ingredient = new Ingredient(idIng, nomIng, photoIng, nomRayon);
-			
-		}			
-		
-		prepare.close();
-
-		return ingredient;
+    public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
 	}
-
+    
 }

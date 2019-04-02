@@ -2,22 +2,19 @@ package les.concepteurs.fooder.metier;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
-@Entity
-@Table(name = "rayon")
+@Entity(name="rayon")
+@Table(name="rayon")
 public class Rayon {
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rayon")
 	private int idRayon;
     
-    @Column(name = "nom_rayon")
+    
+    @Column(name = "nom")
 	private String nomRayon;
 	
 	/**
@@ -46,9 +43,11 @@ public class Rayon {
 		return nomRayon;
 	}
 
+	@SuppressWarnings("unused")
 	private void setIdRayon(int idRayon) {
 		this.idRayon = idRayon;
 	}
+	@SuppressWarnings("unused")
 	private void setNomRayon(String nomRayon) {
 		this.nomRayon = nomRayon;
 	}
