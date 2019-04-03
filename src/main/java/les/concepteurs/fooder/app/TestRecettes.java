@@ -92,7 +92,7 @@ public class TestRecettes extends HttpServlet {
 //		System.out.println(rayon1);
 		
 		ServiceIngredient serviceIngredient = new ServiceIngredient();
-		Ingredient ingredient = serviceIngredient.findById("1");
+		Ingredient ingredient = serviceIngredient.findById(1);
 		System.out.println(ingredient);
 		System.out.println("Nom du rayon :" + ingredient.getRayon().getNomRayon());
 		

@@ -17,7 +17,7 @@ import les.concepteurs.fooder.metier.Ingredient;
  * @author Philippe Cohen
  * @see https://examples.javacodegeeks.com/enterprise-java/hibernate/hibernate-jpa-dao-example/
  */
-public class IngredientDAO implements interfaceDAOHibernate<Ingredient, String>  {
+public class IngredientDAO implements interfaceDAOHibernate<Ingredient, Integer>  {
 	
 	private Transaction transaction;;
     private Session session;
@@ -51,8 +51,8 @@ public class IngredientDAO implements interfaceDAOHibernate<Ingredient, String> 
     }
     
     public void closeSession() {
-    	//this.session.close();
     	System.out.println("On Ingredient closed : ");
+    	this.session.close();
     }
     
     public void closeSessionTransaction() {
@@ -74,13 +74,13 @@ public class IngredientDAO implements interfaceDAOHibernate<Ingredient, String> 
         getSession().update(entity);
     }
  
-    public Ingredient findById(String id) {
-    	Ingredient ingredient = (Ingredient) getSession().get(Ingredient.class, Integer.parseInt(id));
+    public Ingredient findById(Integer id) {
+    	Ingredient ingredient = (Ingredient) getSession().get(Ingredient.class, id);
         return ingredient; 
     }
     
-    public Ingredient find(int id) {
-    	return findById(Integer.toString(id));
+    public Ingredient find(Integer id) {
+    	return findById(id);
     }
  
     public void delete(Ingredient entity) {

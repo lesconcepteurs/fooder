@@ -28,14 +28,14 @@ public class ServiceIngredient {
         ingredientDAO.closeSessionTransaction();
     }
  
-    public Ingredient findById(String id) {
+    public Ingredient findById(Integer id) {
         ingredientDAO.openSession();
         Ingredient ingredient = ingredientDAO.findById(id);
-        ingredientDAO.closeSession();
+//      ingredientDAO.closeSession();
         return ingredient;
     }
  
-    public void delete(String id) {
+    public void delete(Integer id) {
         ingredientDAO.openSessionTransaction();
         Ingredient ingredient = ingredientDAO.findById(id);
         ingredientDAO.delete(ingredient);

@@ -51,7 +51,7 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 		
 		while (result.next()) {
 			
-			Denree denree = new Denree(new IngredientDAO(connect).find(result.getInt("ID_ING")), 
+			Denree denree = new Denree(new IngredientDAO().find(result.getInt("ID_ING")), 
 										result.getString("NOM_UNITE"), 
 										result.getInt("QUANTITE"));
 			
