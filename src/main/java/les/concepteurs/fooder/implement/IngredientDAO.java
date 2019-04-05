@@ -22,6 +22,19 @@ public class IngredientDAO extends DAOHibSessionTransaction implements interface
     /*
      * CRUD functions
      */
+    
+    public Ingredient findById(Integer id) {
+    	
+    	Ingredient ingredient = getSession().get(Ingredient.class, id);
+        return ingredient; 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Ingredient> findAll() {
+		List<Ingredient> ingredient = (List<Ingredient>) getSession().createQuery("from ingredient").list();
+        return ingredient;
+    }
+    
 //    
 //    public void persist(Ingredient entity) {
 //        getSession().save(entity);
@@ -30,26 +43,13 @@ public class IngredientDAO extends DAOHibSessionTransaction implements interface
 //    public void update(Ingredient entity) {
 //        getSession().update(entity);
 //    }
-// 
-    public Ingredient findById(Integer id) {
-    	Ingredient ingredient = getSession().get(Ingredient.class, id);
-        return ingredient; 
-    }
-    
+//     
 //    public Ingredient find(Integer id) {
 //    	return findById(id);
-//    }
- 
+//    } 
 //    public void delete(Ingredient entity) {
 //        getSession().delete(entity);
 //    }
- 
-    @SuppressWarnings("unchecked")
-    public List<Ingredient> findAll() {
-		List<Ingredient> ingredient = (List<Ingredient>) getSession().createQuery("from ingredient").list();
-        return ingredient;
-    }
- 
 //    public void deleteAll() {
 //        List<Ingredient> entityList = findAll();
 //        for (Ingredient entity : entityList) {

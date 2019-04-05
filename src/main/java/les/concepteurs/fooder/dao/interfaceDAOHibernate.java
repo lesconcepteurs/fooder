@@ -13,10 +13,14 @@ import org.hibernate.Session;
  */
 public interface interfaceDAOHibernate<T, Id> {
 
+	// methodes abstraites à définir dans la classe qui implémente l'interface
+	
 	public T findById(Id id);
 
 	public List<T> findAll();
 
+	// methodes default communes à toutes les Dao
+	
 	public default void persist(Session session, T entity) 
 	{
 		session.save(entity);
