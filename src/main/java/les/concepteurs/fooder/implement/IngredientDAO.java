@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import les.concepteurs.fooder.dao.DAOHibernate;
 import les.concepteurs.fooder.dao.HibernateUtil;
 import les.concepteurs.fooder.dao.interfaceDAOHibernate;
 import les.concepteurs.fooder.metier.Ingredient;
@@ -17,50 +18,13 @@ import les.concepteurs.fooder.metier.Ingredient;
  * @author Philippe Cohen
  * @see https://examples.javacodegeeks.com/enterprise-java/hibernate/hibernate-jpa-dao-example/
  */
-public class IngredientDAO implements interfaceDAOHibernate<Ingredient, Integer>  {
+public class IngredientDAO extends DAOHibernate implements interfaceDAOHibernate<Ingredient, Integer>  {
+
 	
-	private Transaction transaction;;
-    private Session session;
-	
-    
     public IngredientDAO() {
 		super();
 	}
-    
-    /*
-     * Session & transaction 
-     */
-    
-    public Session openSession() {
-    	this.session = HibernateUtil.getSessionFactory().openSession();
-		return session;
-    }
-    
-    public Session openSessionTransaction() {
-    	this.session = HibernateUtil.getSessionFactory().openSession();
-    	this.transaction = session.beginTransaction();
-		return session;
-    }
-    
-    @SuppressWarnings("unused")
-	private static SessionFactory getSessionFactory() {
-        Configuration configuration = new Configuration().configure();
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-        SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-        return sessionFactory;
-    }
-    
-    public void closeSession() {
-    	System.out.println("On Ingredient closed : ");
-    	this.session.close();
-    }
-    
-    public void closeSessionTransaction() {
-    	this.transaction.commit();
-    	this.session.close();
-    }
-    
-    
+  
     
     /*
      * CRUD functions
@@ -101,21 +65,5 @@ public class IngredientDAO implements interfaceDAOHibernate<Ingredient, Integer>
     }
     
     
-    /*
-     * Getters & Setters
-     */
-    
-    public Transaction getTransaction() {
-		return transaction;
-	}
-	public Session getSession() {
-		return session;
-	}
-	public void setSession(Session session) {
-		this.session = session;
-	}
-    public void setTransaction(Transaction transaction) {
-		this.transaction = transaction;
-	}
-    
+
 }
