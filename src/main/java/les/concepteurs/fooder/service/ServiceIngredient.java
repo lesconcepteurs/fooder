@@ -16,11 +16,12 @@ public class ServiceIngredient {
 	/*
 	 * Methodes
 	 */
+	
 	public void persist(Ingredient entity) {
         getIngredientDao().openSessionTransaction();
         getIngredientDao().persist(getIngredientDao().getSession(), entity);
         getIngredientDao().closeSessionTransaction();
-    }
+    } 
  
     public void update(Ingredient entity) {
     	getIngredientDao().openSessionTransaction();
