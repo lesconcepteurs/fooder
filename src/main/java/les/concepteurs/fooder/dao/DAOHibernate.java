@@ -15,15 +15,14 @@ public class DAOHibernate
      * Session & transaction 
      */
     
-    public Session openSession() {
+    public void openSession() {
     	this.session = HibernateUtil.getSessionFactory().openSession();
-		return session;
-    }
+	}
     
-    public Session openSessionTransaction() {
+    public void openSessionTransaction() {
     	this.session = HibernateUtil.getSessionFactory().openSession();
     	this.transaction = session.beginTransaction();
-		return session;
+//		return session;
     }
     
     @SuppressWarnings("unused")
