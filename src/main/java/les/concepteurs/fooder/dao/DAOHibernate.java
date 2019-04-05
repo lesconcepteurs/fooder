@@ -1,10 +1,8 @@
 package les.concepteurs.fooder.dao;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+
 
 public class DAOHibernate 
 {
@@ -22,9 +20,10 @@ public class DAOHibernate
     public void openSessionTransaction() {
     	this.session = HibernateUtil.getSessionFactory().openSession();
     	this.transaction = session.beginTransaction();
-//		return session;
     }
     
+    /*
+     * Methode à priori non utilisée. A enlever si pas de soucis.
     @SuppressWarnings("unused")
 	private static SessionFactory getSessionFactory() {
         Configuration configuration = new Configuration().configure();
@@ -32,6 +31,7 @@ public class DAOHibernate
         SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
         return sessionFactory;
     }
+    */
     
     public void closeSession() {
     	System.out.println("On Ingredient closed : ");
