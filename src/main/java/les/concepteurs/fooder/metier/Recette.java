@@ -1,23 +1,59 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="recette")
 public class Recette {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_REC")
 	private int idRec;
-	private String themeRec;
-	private String typeRec;
+	
+	@OneToOne(cascade= {CascadeType.DETACH,
+						CascadeType.MERGE,
+						CascadeType.PERSIST,
+						CascadeType.REFRESH})
+	@JoinColumn(name="ID_THEME")
+	private ThemeRecette themeRec;
+	
+	@OneToOne(cascade= {CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH})
+	@JoinColumn(name="ID_TYPER")
+	private TypeRecette typeRec;
+	
+	@Column(name="NOM_REC")
 	private String nomRec;
-	private ListeDescriptionsRecette descRec;
+		
+	@Column(name="SEL_POIVRE")
 	private boolean selPoivre;
+	
+	@Column(name="PHOTO_REC")
 	private String photoRec;
+	
+	@Column(name="COMPLEMENT_REC")
 	private String complementRec;
+	
+	private ListeDescriptionsRecette descRec;
 	private ListeDenrees denrees;
 	private ListePreparations listePrepa;
 
 	
 	/**
 	 * @param idRec (int)
-	 * @param themeRec (String)
-	 * @param typeRec (String)
+	 * @param themeRec (ThemeRecette)
+	 * @param typeRec (TypeRecette)
 	 * @param nomRec (String)
 	 * @param descRec (ListeDescRec)
 	 * @param selPoivre (boolean)
@@ -26,28 +62,25 @@ public class Recette {
 	 * @param denrees (ListeDenrees)
 	 */
 	public Recette(
-			int idRec, 
-			String themeRec, 
-			String typeRec, 
+			ThemeRecette themeRec, 
+			TypeRecette typeRec, 
 			String nomRec, 
-			ListeDescriptionsRecette descRec,
 			boolean selPoivre, 
 			String photoRec, 
 			String complementRec, 
+			ListeDescriptionsRecette descRec,
 			ListeDenrees denrees,
-			ListePreparations listePrepa) {
-
-		this.idRec = idRec;
+			ListePreparations listePrepa) 
+	{
 		this.themeRec = themeRec;
 		this.typeRec = typeRec;
 		this.nomRec = nomRec;
-		this.descRec = descRec;
 		this.selPoivre = selPoivre;
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
+		this.descRec = descRec;
 		this.denrees = denrees;
-		this.listePrepa = listePrepa;
-		
+		this.listePrepa = listePrepa;		
 	}
 	
 	/**
@@ -62,14 +95,6 @@ public class Recette {
 
 	public int getIdRec() {
 		return idRec;
-	}
-
-	public String getThemeRec() {
-		return themeRec;
-	}
-
-	public String getTypeRec() {
-		return typeRec;
 	}
 
 	public String getNomRec() {
@@ -104,14 +129,6 @@ public class Recette {
 		this.idRec = idRec;
 	}
 
-	public void setThemeRec(String themeRec) {
-		this.themeRec = themeRec;
-	}
-
-	public void setTypeRec(String typeRec) {
-		this.typeRec = typeRec;
-	}
-
 	public void setNomRec(String nomRec) {
 		this.nomRec = nomRec;
 	}
@@ -140,14 +157,30 @@ public class Recette {
 		this.listePrepa = listePrepa;
 	}
 
+	public ThemeRecette getThemeRec() {
+		return themeRec;
+	}
+
+	public void setThemeRec(ThemeRecette themeRec) {
+		this.themeRec = themeRec;
+	}
+
+	public TypeRecette getTypeRec() {
+		return typeRec;
+	}
+
+	public void setTypeRec(TypeRecette typeRec) {
+		this.typeRec = typeRec;
+	}
+
 	@Override
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
-				+ ", descRec=" + descRec + ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec="
-				+ complementRec + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
+				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
+				+ ", descRec=" + descRec + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
 	}
 
-	
+
 	
 
 }
