@@ -31,7 +31,7 @@ public class ServiceIngredient {
     public Ingredient findById(Integer id) {
         ingredientDAO.openSession();
         Ingredient ingredient = ingredientDAO.findById(id);
-//      ingredientDAO.closeSession();
+        ingredientDAO.closeSession();
         return ingredient;
     }
  
