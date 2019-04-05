@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
-public class DAOHibernate 
+public class DAOHibSessionTransaction 
 {
 	private Transaction transaction;
     private Session session;
