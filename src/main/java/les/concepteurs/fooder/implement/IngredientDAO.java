@@ -39,7 +39,7 @@ public class IngredientDAO extends DAOHibernate implements interfaceDAOHibernate
     }
  
     public Ingredient findById(Integer id) {
-    	Ingredient ingredient = (Ingredient) getSession().get(Ingredient.class, id);
+    	Ingredient ingredient = getSession().get(Ingredient.class, id);
         return ingredient; 
     }
     
