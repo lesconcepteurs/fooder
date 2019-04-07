@@ -24,47 +24,62 @@
 		<li><input type="image" id="image" title="Desserts" alt="Dessert"
 			src="./asset/images/dessert.png"></li>
 	</ul>
-
-	<div class="box">
+	
+	
 		<!-- obligation d'inserer le caroussel dans un bloc "box" afin de permettre la mise en page de celui-ci -->
-		<div class="carousel">
-			<!--  parcourir la liste de recettes et affichage dans le caroussel -->
-			<%
-				ListeRecettes listeRecettes = (ListeRecettes) request.getAttribute("listeRecettes");
-				int i = 0;
-				for (Recette rec : listeRecettes) { // iteration dans l'Arraylist Recette
-			%>
-			<input type="checkbox" class="faux-ui-facia">
-			<div class="slide" slide="<%=i++%>"
-				annot="<%=rec.getNomRec()%>">
-				<!-- pour recuperer un nom de recette -->
-				<img src="./asset/images/<%=rec.getPhotoRec()%>"
-					alt="<%=rec.getNomRec()%>">
-				<!-- pour recuperer une photo de recette -->
+		<div class="box">
+			<div class="carousel" id="caroussel">
+				<!--  parcourir la liste de recettes et affichage dans le caroussel -->
+				<%
+					ListeRecettes listeRecettes = (ListeRecettes) request.getAttribute("listeRecettes");
+					int i = 0;
+					for (Recette rec : listeRecettes) { // iteration dans l'Arraylist Recette
+				%>
+				<input type="checkbox" class="faux-ui-facia">
+				<div class="slide" slide="<%=i++%>"
+					annot="<%=rec.getNomRec()%>">
+					
+					
+					<!-- pour recuperer un nom de recette -->
+					<img src="./asset/images/<%=rec.getPhotoRec()%>"
+						alt="<%=rec.getNomRec()%>">		
+					<!-- pour recuperer une photo de recette -->
+				
+				</div>
+				<%
+					}
+				%>
+				
 			</div>
-			<%
-				}
-			%>
-
 		</div>
-	</div>
-
-	<CENTER>
-		<!-- seul moyen  trouvé pour centrer la div menu du bas -->
-		<div class="box2">
-			<!-- Bloc menu bas 3 boutons -->
-			<ul class="nav2 " />
-			<nav class="navbar navbar-inverse bg-faded navbar-fixed-top">
-			<li><input type="image" id="image" title="Voir ma liste"
-				alt="Panier" src="./asset/images/panier2.png"></li>
-			<li><input type="image" id="image"
-				title="Ajouter dans mon panier" alt="J'aime"
-				src="./asset/images/like2.png"></li>
-			<li><input type="image" id="image" title="Description"
-				alt="Voir recette" src="./asset/images/loupe2.png"></li>
-			</ul>
-		</div>
-	</CENTER>
+		<CENTER>
+			<!-- seul moyen  trouvé pour centrer la div menu du bas -->
+			<div class="box2">
+				<!-- Bloc menu bas 3 boutons -->
+				<ul class="nav2 " />
+				<nav class="navbar navbar-inverse bg-faded navbar-fixed-top">
+				<li><input type="image" id="image" title="Voir ma liste"
+					alt="Panier" src="./asset/images/panier2.png"></li>
+				<li><input type="image" class= "ajoutPanier" onClick="ajouterPanier()"
+					id="image"
+					title="Ajouter dans mon panier" alt="J'aime"
+					src="./asset/images/like2.png"></li>
+				<li><input type="image" id="image" title="Description"
+					alt="Voir recette" src="./asset/images/loupe2.png"></li>
+				</ul>
+			</div>
+		</CENTER>
+	<script type="text/javascript">
+		
+		function ajouterPanier() {
+			var message = "Le bouton ajout au panier a bien été cliqué !";
+			alert(message);
+			//var nomRec = $('div.slide').attr('annot');
+			//var $nomRec = $('div.slide').attr('annot').eq(i);
+			//alert($nomRec);			
+		}
+	</script>
+	
 	<label>Fooder</label>
 	<!-- ce label n'apparaît en bas de page que pour le reponsive (hidden en mode web) -->
 	<div>
