@@ -9,6 +9,8 @@ import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.implement.RecetteDAO;
 
 /**
+ * Classe Service qui implémente les methodes de l'interface IService.
+ * Ces methodes permettent de réaliser les operation de CRUD classique
  * @author Florian
  *
  */
