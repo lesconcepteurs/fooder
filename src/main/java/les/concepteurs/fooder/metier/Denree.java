@@ -101,7 +101,7 @@ public class Denree implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Denree [ingredient=" + ingredient + ", uniteMesure=" + uniteMesure + ", recette=" + recette
+		return "Denree [ingredient=" + ingredient + ", uniteMesure=" + uniteMesure 
 				+ ", quantite=" + quantite + "]";
 	}
 	

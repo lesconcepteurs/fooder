@@ -5,6 +5,7 @@ import java.util.List;
 import les.concepteurs.fooder.implement.DenreeDAO;
 import les.concepteurs.fooder.implement.IngredientDAO;
 import les.concepteurs.fooder.implement.RecetteDAO;
+import les.concepteurs.fooder.implement.UniteMesureDAO;
 import les.concepteurs.fooder.metier.Denree;
 
 public class ServiceDenree implements IService<Denree, Integer> 
@@ -13,6 +14,7 @@ public class ServiceDenree implements IService<Denree, Integer>
 	private DenreeDAO denreeDAO;
 	private IngredientDAO ingredientDAO;
 	private RecetteDAO recetteDAO;
+	private UniteMesureDAO uniteMesureDAO;
 
 
 	/**
@@ -22,6 +24,8 @@ public class ServiceDenree implements IService<Denree, Integer>
 	{
 		denreeDAO = new DenreeDAO();
 		ingredientDAO = new IngredientDAO();
+		recetteDAO = new RecetteDAO();
+		uniteMesureDAO = new UniteMesureDAO();
 	}
 	
 
@@ -43,18 +47,37 @@ public class ServiceDenree implements IService<Denree, Integer>
 		getDenreeDAO().closeSessionTransaction();
 	}
 
-	@Override
-	public Denree findById(Integer idIng, Integer idRec, Integer idUnite) {
-		getDenreeDAO().openSession();
-		Denree denree = new Denree();
-		denree.setIngredient(getIngredientDAO().findById(idIng));
-		denree.setRecette(getRecetteDAO().findById(idRec));
-		
-		Denree denree = getDenreeDAO().findById(idIng, idRec, idUnite);
-		getDenreeDAO().closeSession();
-		return denree;
-	}
 
+	@Override
+	public Denree findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+//	public Denree findByPrimaryKey(Integer idIng, Integer idRec, Integer idUnite) {
+//		getDenreeDAO().openSession();
+//		Denree denree = new Denree();
+//		
+//		getIngredientDAO().openSession();
+//		denree.setIngredient(getIngredientDAO().findById(idIng));
+//		getIngredientDAO().closeSession();
+//		
+//		getRecetteDAO().openSession();
+//		denree.setRecette(getRecetteDAO().findById(idRec));
+//		getRecetteDAO().closeSession();
+//		
+//		getUniteMesureDAO().openSession();
+//		denree.setUniteMesure(getUniteMesureDAO().findById(idUnite));
+//		getUniteMesureDAO().closeSession();
+//		
+//		Denree denreeNew = getDenreeDAO().getSession().load(Denree.class, denree);
+//		
+//		getDenreeDAO().closeSession();
+//		return denreeNew;
+//	}
+
+	
 	@Override
 	public void delete(Integer id) {
 		getDenreeDAO().openSessionTransaction();
@@ -90,12 +113,14 @@ public class ServiceDenree implements IService<Denree, Integer>
 	public RecetteDAO getRecetteDAO() {
 		return recetteDAO;
 	}
-
-	@Override
-	public Denree findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public UniteMesureDAO getUniteMesureDAO() {
+		return uniteMesureDAO;
 	}
+
+
+
+
 
 
 }

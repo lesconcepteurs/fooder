@@ -23,7 +23,21 @@ public class ReadPreparationApp {
 		Recette recette = serviceRecette.findById(1);
 		System.out.println(recette);
 		System.out.println("Nom du type de recette : "+recette.getTypeRec().getNomTypeR());
+			
+		for (int i = 0 ; i < recette.getListeDenrees().size(); i++) {
+			System.out.println("Liste de denrees de la recette : "+recette.getListeDenrees());
+		}
+				
+		System.out.println("****************");
+		System.out.println("****************");
 		
+		/*
+		ServiceDenree serviceDenree = new ServiceDenree();
+		Denree denree = serviceDenree.findAll(1);
+		System.out.println(denree);
+		System.out.println("Quantité de la denrée : "+denree.getQuantite());
+		*/
+		/*
 		System.out.println("****************");
 		System.out.println("****************");
 		
@@ -31,7 +45,7 @@ public class ReadPreparationApp {
 		Denree denree = serviceDenree.findById(1);
 		System.out.println(denree);
 		System.out.println("Quantité de la denrée : "+denree.getQuantite());
-		
+		*/
 	}
 
 }

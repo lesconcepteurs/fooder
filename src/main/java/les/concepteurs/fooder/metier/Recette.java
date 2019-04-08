@@ -1,10 +1,12 @@
 package les.concepteurs.fooder.metier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,8 +56,8 @@ public class Recette {
 	//cascade.ALL car on veut appliquer la cascade pour tous les types, y compris la suppression.
 	// en effet, quand on supprime une recette on veut aussi supprimer les denrees associées.
 	// mappedBy pointe sur la propriété de recette de la classe Denree
-	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL)
-	private ArrayList<Denree> listeDenrees;
+	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Denree> listeDenrees;
 	
 	private ListePreparations listePrepa;
 	
@@ -83,7 +85,7 @@ public class Recette {
 			String photoRec, 
 			String complementRec, 
 			ListeDescriptionsRecette descRec,
-			ListeDenrees denrees,
+			List<Denree> listeDenrees,
 			ListePreparations listePrepa) 
 	{
 		this.themeRec = themeRec;
@@ -93,7 +95,7 @@ public class Recette {
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
 		this.descRec = descRec;
-		this.denrees = denrees;
+		this.listeDenrees = listeDenrees;
 		this.listePrepa = listePrepa;		
 	}
 	
@@ -131,9 +133,6 @@ public class Recette {
 		return complementRec;
 	}
 
-	public ListeDenrees getDenrees() {
-		return denrees;
-	}
 
 	public ListePreparations getListePrepa() {
 		return listePrepa;
@@ -163,8 +162,12 @@ public class Recette {
 		this.complementRec = complementRec;
 	}
 
-	public void setDenrees(ListeDenrees denrees) {
-		this.denrees = denrees;
+	public List<Denree> getListeDenrees() {
+		return listeDenrees;
+	}
+
+	public void setListeDenrees(List<Denree> listeDenrees) {
+		this.listeDenrees = listeDenrees;
 	}
 
 	public void setListePrepa(ListePreparations listePrepa) {
@@ -191,7 +194,7 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + descRec + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
+				+ ", descRec=" + descRec + ", listeDenrees=" + listeDenrees + ", listePrepa=" + listePrepa + "]";
 	}
 
 
