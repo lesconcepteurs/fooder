@@ -3,12 +3,17 @@ package les.concepteurs.fooder.service;
 import java.util.List;
 
 import les.concepteurs.fooder.implement.DenreeDAO;
+import les.concepteurs.fooder.implement.IngredientDAO;
+import les.concepteurs.fooder.implement.RecetteDAO;
 import les.concepteurs.fooder.metier.Denree;
 
 public class ServiceDenree implements IService<Denree, Integer> 
 {
 
 	private DenreeDAO denreeDAO;
+	private IngredientDAO ingredientDAO;
+	private RecetteDAO recetteDAO;
+
 
 	/**
 	 * constructeur qui instancie l'objet DAO
@@ -16,6 +21,7 @@ public class ServiceDenree implements IService<Denree, Integer>
 	public ServiceDenree() 
 	{
 		denreeDAO = new DenreeDAO();
+		ingredientDAO = new IngredientDAO();
 	}
 	
 
@@ -38,9 +44,13 @@ public class ServiceDenree implements IService<Denree, Integer>
 	}
 
 	@Override
-	public Denree findById(Integer id) {
+	public Denree findById(Integer idIng, Integer idRec, Integer idUnite) {
 		getDenreeDAO().openSession();
-		Denree denree = getDenreeDAO().findById(id);
+		Denree denree = new Denree();
+		denree.setIngredient(getIngredientDAO().findById(idIng));
+		denree.setRecette(getRecetteDAO().findById(idRec));
+		
+		Denree denree = getDenreeDAO().findById(idIng, idRec, idUnite);
 		getDenreeDAO().closeSession();
 		return denree;
 	}
@@ -72,5 +82,20 @@ public class ServiceDenree implements IService<Denree, Integer>
 	public DenreeDAO getDenreeDAO() {
 		return denreeDAO;
 	}
+
+	public IngredientDAO getIngredientDAO() {
+		return ingredientDAO;
+	}
+
+	public RecetteDAO getRecetteDAO() {
+		return recetteDAO;
+	}
+
+	@Override
+	public Denree findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
