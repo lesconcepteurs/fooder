@@ -11,7 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+// Obligation de nommer ici l'entité, sinon Exception levée si on veut récuperer les denrees avec le findAll() de DenreeDAO. 
+//Exception : Exception in thread "main" java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: denree is not mapped [from denree]
+@Entity(name="denree")
 @Table(name="denree")
 public class Denree implements Serializable {
 	

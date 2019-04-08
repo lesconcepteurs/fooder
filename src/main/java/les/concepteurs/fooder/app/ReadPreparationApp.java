@@ -1,5 +1,7 @@
 package les.concepteurs.fooder.app;
 
+import java.util.List;
+
 import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.Ingredient;
 import les.concepteurs.fooder.metier.Recette;
@@ -30,13 +32,16 @@ public class ReadPreparationApp {
 				
 		System.out.println("****************");
 		System.out.println("****************");
-		
-		/*
+				
 		ServiceDenree serviceDenree = new ServiceDenree();
-		Denree denree = serviceDenree.findAll(1);
-		System.out.println(denree);
-		System.out.println("Quantité de la denrée : "+denree.getQuantite());
-		*/
+		List<Denree> listeDenrees = serviceDenree.findAll();
+		System.out.println(listeDenrees);
+		
+		for (int i = 0 ; i < listeDenrees.size() ; i++) {
+			System.out.println("Quantité de la denrée : "+listeDenrees.get(i).getQuantite());
+		}
+		
+		
 		/*
 		System.out.println("****************");
 		System.out.println("****************");
