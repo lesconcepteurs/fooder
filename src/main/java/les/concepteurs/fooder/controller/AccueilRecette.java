@@ -35,7 +35,7 @@ public class AccueilRecette extends HttpServlet {
 		// création d'un objet ServiceRecette qui fera appel à ListeRecettesDAO
 		ServiceRecette servRec = new ServiceRecette();
 		ListeRecettes listeRecettes = null;
-		listeRecettes = servRec.recupListeRecettes();
+		/*listeRecettes = servRec.recupListeRecettes();*/
 		
 		//controle 
 		System.out.println(listeRecettes);

@@ -3,8 +3,13 @@ package les.concepteurs.fooder.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-public class DAOHibernate 
+/**
+ * Classe qui implemente les ouvertures/fermetures de Sessions et de Transactions
+ * Classe mere des classes de DAO
+ * @author Florian
+ *
+ */
+public class DAOHibSessionTransaction 
 {
 	private Transaction transaction;
     private Session session;

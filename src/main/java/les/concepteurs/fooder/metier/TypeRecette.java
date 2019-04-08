@@ -1,8 +1,22 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="type_recette")
 public class TypeRecette {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_TYPER")
 	private int idTypeR;
+	
+	@Column(name="NOM_TYPER")
 	private String nomTypeR;
 	
 	/**

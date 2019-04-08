@@ -1,8 +1,22 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="theme_recette")
 public class ThemeRecette {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_THEME")
 	private int idTheme;
+	
+	@Column(name="NOM_THEME")
 	private String nomTheme;
 	
 	

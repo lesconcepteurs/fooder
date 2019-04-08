@@ -5,9 +5,9 @@ import java.util.List;
 import les.concepteurs.fooder.implement.IngredientDAO;
 import les.concepteurs.fooder.metier.Ingredient;
 
-public class ServiceIngredient {
+public class ServiceIngredient implements IService<Ingredient, Integer>{
 	
-	private static IngredientDAO ingredientDAO;
+	private IngredientDAO ingredientDAO;
 
 	public ServiceIngredient() {
 		ingredientDAO = new IngredientDAO();
@@ -16,46 +16,52 @@ public class ServiceIngredient {
 	/*
 	 * Methodes
 	 */
+	@Override
 	public void persist(Ingredient entity) {
-        ingredientDAO.openSessionTransaction();
-        ingredientDAO.persist(entity);
-        ingredientDAO.closeSessionTransaction();
+        getIngredientDao().openSessionTransaction();
+        getIngredientDao().persist(getIngredientDao().getSession(), entity);
+        getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public void update(Ingredient entity) {
-        ingredientDAO.openSessionTransaction();
-        ingredientDAO.update(entity);
-        ingredientDAO.closeSessionTransaction();
+    	getIngredientDao().openSessionTransaction();
+    	getIngredientDao().update(getIngredientDao().getSession(), entity);
+    	getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public Ingredient findById(Integer id) {
-        ingredientDAO.openSession();
-        Ingredient ingredient = ingredientDAO.findById(id);
-        ingredientDAO.closeSession();
+    	getIngredientDao().openSession();
+        Ingredient ingredient = getIngredientDao().findById(id);
+        getIngredientDao().closeSession();
         return ingredient;
     }
  
+	@Override
     public void delete(Integer id) {
-        ingredientDAO.openSessionTransaction();
-        Ingredient ingredient = ingredientDAO.findById(id);
-        ingredientDAO.delete(ingredient);
-        ingredientDAO.closeSessionTransaction();
+    	getIngredientDao().openSessionTransaction();
+        Ingredient ingredient = getIngredientDao().findById(id);
+        getIngredientDao().delete(getIngredientDao().getSession(), ingredient);
+        getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public List<Ingredient> findAll() {
-        ingredientDAO.openSession();
-        List<Ingredient> ingredients = ingredientDAO.findAll();
-        ingredientDAO.closeSession();
+    	getIngredientDao().openSession();
+        List<Ingredient> ingredients = getIngredientDao().findAll();
+        getIngredientDao().closeSession();
         return ingredients;
     }
  
+	@Override
     public void deleteAll() {
-        ingredientDAO.openSessionTransaction();
-        ingredientDAO.deleteAll();
-        ingredientDAO.closeSessionTransaction();
+    	getIngredientDao().openSessionTransaction();
+    	getIngredientDao().deleteAll(getIngredientDao().getSession());
+    	getIngredientDao().closeSessionTransaction();
     }
  
-    public IngredientDAO ingredientDao() {
+    public IngredientDAO getIngredientDao() {
         return ingredientDAO;
     }
 	

@@ -71,6 +71,7 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 				isSelPoivre = false;
 			}
 			
+			/*
 			Recette rec = new Recette(result.getInt("id_rec"), 
 					result.getString("nom_theme"),
 					result.getString("nom_typer"), 
@@ -82,7 +83,7 @@ public class ListeRecettesDAO extends DAO<ListeRecettes>{
 					new ListeDenreesDAO(connect).find(result.getInt("id_rec")), 
 					new ListePreparationsDAO(connect).find(result.getInt("id_rec")));
 			
-			listeRecettes.add(rec);
+			listeRecettes.add(rec);*/
 		}
 			
 		return listeRecettes;
