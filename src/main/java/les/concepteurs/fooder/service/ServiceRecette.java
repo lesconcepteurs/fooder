@@ -17,45 +17,45 @@ import les.concepteurs.fooder.implement.ListeRecettesDAO;
 public class ServiceRecette {
 
 	public ServiceRecette() {
-				
+
 	}
-	
+
 	public ListeRecettes recupListeRecettes() {
-		
+
 		ListeRecettes listeRecettes = null;
-		
+
 		try {
-			
+
 			listeRecettes = new ListeRecettesDAO(DAOConnect.getConnexion()).findAll();
-		
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		//controle console
 		System.out.println("je suis bien dans ServiceRecettes");
-		
+
 		return listeRecettes;
 	}
-	
+
 	public ListeRecettes recupListeRecettes(int idType) {
-		
+
 		ListeRecettes listeRecettes = null;
-		
+
 		try {
-			
+
 			listeRecettes = new ListeRecettesDAO(DAOConnect.getConnexion()).findType(idType);
-		
+
 		} catch (SQLException e) {
-		
+
 			e.printStackTrace();
 		}
-		
+
 		//controle
 		System.out.println("je suis bien dans ServiceRecettes.recupListeRecettes(int id Type)");
-	
+
 		return listeRecettes;
 	}
-	
+
 }

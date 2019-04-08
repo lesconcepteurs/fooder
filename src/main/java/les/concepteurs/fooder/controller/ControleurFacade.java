@@ -23,29 +23,44 @@ import javax.servlet.http.HttpServletResponse;
 public class ControleurFacade extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private RequestDispatcher disp;
-	
+
 	/**
 	 * Methode doGet qui recupere l'url (A partir du chemin relatif a la servlet, 
 	 * cad le chemin apres l'urlPattern de la servlet)
 	 * et redirige vers une sous servlet selon le path.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String path = request.getPathInfo();
-		
+
 		System.out.println("Dans le doGet de la servlet Controleur de facade.");
 		System.out.println("Context path= "+ request.getContextPath());
 		System.out.println("Path= "+path);
-		
-		if (path == null || path.equals("/")) 		doAccueilRecette(request, response);
-		else if (path.equals("/hello"))				doHello(request, response);
-		else 										doAccueilRecette(request, response);
-				
-		System.out.println("fin du doGet de la servlet Controleur facade");
-	}
 
+		if (path == null || path.equals("/")) {	
+			doAccueilRecette(request, response);
+		}
+		else if (path.equals("/Entrees"))	{
+			doEntrees(request, response);
+		}
+		else if (path.equals("/Plats")) {
+			doPlats(request, response);
+		}
+		else if (path.equals("/Desserts")) {
+			doDesserts(request, response);
+		}
+		else 		{								                    
+
+		}
+
+		System.out.println("fin du doGet de la servlet Controleur facade");
+
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 	/**
 	 * Methode qui renvoie vers la servlet AccueilRecette
@@ -56,33 +71,52 @@ public class ControleurFacade extends HttpServlet{
 	 */
 	private void doAccueilRecette(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("dans doAccueilRecette");
-		
+
 		String path = request.getPathInfo();
 		//On ajoute au path l'urlPattern de la servlet cible
 		path = path + "accueilRecette";
-		
+
 		System.out.println("path : " + path);
-		
+
 		disp = request.getRequestDispatcher(path);
 		disp.forward(request, response);
-		
+
 	}
-	
+
 	/**
-	 * Methode de test
 	 * @param request
 	 * @param response
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	private void doHello(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doHello");
-		String path = request.getContextPath() + "/hello/";
-		System.out.println("context path hello : " +path);
+	private void doEntrees(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doEntrees");
+		String path = request.getContextPath() + "/Entrees/";
+		System.out.println("context path Entrees : " +path);
 		System.out.println("contexte path info : "+ request.getPathInfo());
 		disp = request.getRequestDispatcher(request.getPathInfo());
 		disp.forward(request, response);
-		
+
 	}
-		
+
+	private void doPlats(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPlats");
+		String path = request.getContextPath() + "/Plats/";
+		System.out.println("context path Plats : " +path);
+		System.out.println("contexte path info : "+ request.getPathInfo());
+		disp = request.getRequestDispatcher(request.getPathInfo());
+		disp.forward(request, response);
+
+	}
+
+	private void doDesserts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doDesserts");
+		String path = request.getContextPath() + "/Desserts/";
+		System.out.println("context path Entrees : " +path);
+		System.out.println("contexte path info : "+ request.getPathInfo());
+		disp = request.getRequestDispatcher(request.getPathInfo());
+		disp.forward(request, response);
+
+	}
+
 }

@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="les.concepteurs.fooder.metier.ListeRecettes"%>
@@ -10,7 +8,7 @@
 <html>
 <head>
 <title>Fooder_V4</title>
-<link rel="stylesheet" type="text/css" href="./asset/css/style.css">
+<link rel="stylesheet" type="text/css" href="../asset/css/style2.css">
 <!-- chemin relatif pour acceder à la feuille de style -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
@@ -21,38 +19,20 @@
 		<nav class="navbar navbar-inverse bg-faded navbar-fixed-top">
 		<li>Fooder</li>
 
-		<li><input type="image" value="Entrées" src="./asset/images/salade.png" title="Entrées"
-			onclick="document.location.href='facade/Entrees';"></li>
+		<li> <input type="image" value="Entrées" src="../asset/images/salade.png" title="Entrées"
+			onclick="document.location.href='Entrees';"></li>
 
-		<li><input type="image" value="Plats" src="./asset/images/plat.png" title="Plats"
-			onclick="document.location.href='facade/Plats';"></li>
+		<li><input type="image" value="Entrées" src="../asset/images/plat.png" title="Plats"
+			onclick="document.location.href='Plats';"></li>
 
-		<li><input type="image" value="Desserts"  src="./asset/images/dessert.png" title="Desserts"
-			onclick="document.location.href='facade/Desserts';"></li>
+		<li><input type="image" value="Entrées" src="../asset/images/dessert.png" title="Desserts"
+			onclick="document.location.href='Desserts';"></li>
 	</div>
 
 
 	<div class="box">
 		<!-- obligation d'inserer le caroussel dans un bloc "box" afin de permettre la mise en page de celui-ci -->
-		<div class="carousel">
-			<!--  parcourir la liste de recettes et affichage dans le caroussel -->
-			<%
-				ListeRecettes listeRecettes = (ListeRecettes) request.getAttribute("listeRecettes");
-				int i = 0;
-				for (Recette rec : listeRecettes) { // iteration dans l'Arraylist Recette
-			%>
-			<input type="checkbox" class="faux-ui-facia">
-			<div class="slide" slide="<%=i++%>" annot="<%=rec.getNomRec()%>">
-				<!-- pour recuperer un nom de recette -->
-				<img src="./asset/images/<%=rec.getPhotoRec()%>"
-					alt="<%=rec.getNomRec()%>">
-				<!-- pour recuperer une photo de recette -->
-			</div>
-			<%
-				}
-			%>
-
-		</div>
+		
 	</div>
 
 	<CENTER>
@@ -62,12 +42,12 @@
 			<ul class="nav2 " />
 			<nav class="navbar navbar-inverse bg-faded navbar-fixed-top">
 			<li><input type="image" id="image" title="Voir ma liste"
-				alt="Panier" src="./asset/images/panier2.png"></li>
+				alt="Panier" src="../asset/images/panier2.png"></li>
 			<li><input type="image" id="image"
 				title="Ajouter dans mon panier" alt="J'aime"
-				src="./asset/images/like2.png"></li>
+				src="../asset/images/like2.png"></li>
 			<li><input type="image" id="image" title="Description"
-				alt="Voir recette" src="./asset/images/loupe2.png"></li>
+				alt="Voir recette" src="../asset/images/loupe2.png"></li>
 			</ul>
 		</div>
 	</CENTER>

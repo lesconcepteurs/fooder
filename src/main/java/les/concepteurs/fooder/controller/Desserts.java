@@ -1,6 +1,7 @@
 package les.concepteurs.fooder.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,44 +11,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.metier.ListeRecettes;
+import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.service.ServiceRecette;
+import net.bytebuddy.agent.builder.AgentBuilder.InitializationStrategy.Dispatcher;
 
 /**
- * Servlet implementation class AccueilRecette
- * Servlet qui s'occupe de recuperer la liste des recettes
- * puis renvoyer l'objet liste a la JSP de l'accueil
+ * Servlet implementation class Desserts
  */
 @WebServlet (
-		name = "AccueilRecette",
-		urlPatterns = {"/accueilRecette"}
+		name = "Desserts",
+		urlPatterns = {"/Desserts"}
 		)
-
-public class AccueilRecette extends HttpServlet {
+public class Desserts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("dans le doGet de la servlet AccueilRecette");
-		System.out.println("path : " + request.getPathInfo());
-		if(request.getPathInfo()==null) {
-			// création d'un objet ServiceRecette qui fera appel à ListeRecettesDAO
-			ServiceRecette servRec = new ServiceRecette();
-			ListeRecettes listeRecettes = null;
-			listeRecettes = servRec.recupListeRecettes();
+		// controle console
+		System.out.println("dans le doGet de servlet Desserts");
 
-			//controle 
-			System.out.println(listeRecettes);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-			//set du request
-			request.setAttribute("listeRecettes", listeRecettes);
+		ServiceRecette servRec = new ServiceRecette();
+		System.out.println("je suis dans Desserts recupListeRecette");
+		ListeRecettes listeRec = servRec.recupListeRecettes(3);
 
-			//renvoi vers la jsp d'accueilRecettes
-			RequestDispatcher disp = request.getRequestDispatcher("/vue/accueilRecettes.jsp");
-			disp.forward(request, response);
-		}
+		//set du request
+		request.setAttribute("listeRecettes", listeRec);
 
+		//renvoi vers la jsp d'accueilRecettes
+		RequestDispatcher disp = request.getRequestDispatcher("/vue/accueilRecettes2.jsp");
+		disp.forward(request, response);		
 	}
 
 	/**
@@ -59,3 +55,4 @@ public class AccueilRecette extends HttpServlet {
 	}
 
 }
+

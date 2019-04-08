@@ -35,8 +35,8 @@ public class Hello extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		ServiceRecette servRec = new ServiceRecette();
-		
-		ListeRecettes listeRec = servRec.recupListeRecettes(2);
+		System.out.println("je suis dans Hello recupListeRecette");
+		ListeRecettes listeRec = servRec.recupListeRecettes(1);
 		
 		request.setAttribute("listeRecette", listeRec);
 		
