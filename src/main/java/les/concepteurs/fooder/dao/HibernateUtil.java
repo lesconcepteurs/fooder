@@ -3,6 +3,7 @@ package les.concepteurs.fooder.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.metier.ThemeRecette;
 import les.concepteurs.fooder.metier.TypeRecette;
@@ -17,6 +18,7 @@ public class HibernateUtil {
 			return new Configuration().configure().addAnnotatedClass(Recette.class)
 													.addAnnotatedClass(ThemeRecette.class)
 													.addAnnotatedClass(TypeRecette.class)
+													.addAnnotatedClass(Panier.class)
 													.buildSessionFactory();
 		} catch (Throwable ex) {
 			// Make sure you log the exception, as it might be swallowed
