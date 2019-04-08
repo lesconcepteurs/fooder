@@ -5,7 +5,7 @@ import java.util.List;
 import les.concepteurs.fooder.implement.IngredientDAO;
 import les.concepteurs.fooder.metier.Ingredient;
 
-public class ServiceIngredient {
+public class ServiceIngredient implements IService<Ingredient, Integer>{
 	
 	private IngredientDAO ingredientDAO;
 
@@ -16,18 +16,21 @@ public class ServiceIngredient {
 	/*
 	 * Methodes
 	 */
+	@Override
 	public void persist(Ingredient entity) {
         getIngredientDao().openSessionTransaction();
         getIngredientDao().persist(getIngredientDao().getSession(), entity);
         getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public void update(Ingredient entity) {
     	getIngredientDao().openSessionTransaction();
     	getIngredientDao().update(getIngredientDao().getSession(), entity);
     	getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public Ingredient findById(Integer id) {
     	getIngredientDao().openSession();
         Ingredient ingredient = getIngredientDao().findById(id);
@@ -35,6 +38,7 @@ public class ServiceIngredient {
         return ingredient;
     }
  
+	@Override
     public void delete(Integer id) {
     	getIngredientDao().openSessionTransaction();
         Ingredient ingredient = getIngredientDao().findById(id);
@@ -42,6 +46,7 @@ public class ServiceIngredient {
         getIngredientDao().closeSessionTransaction();
     }
  
+	@Override
     public List<Ingredient> findAll() {
     	getIngredientDao().openSession();
         List<Ingredient> ingredients = getIngredientDao().findAll();
@@ -49,6 +54,7 @@ public class ServiceIngredient {
         return ingredients;
     }
  
+	@Override
     public void deleteAll() {
     	getIngredientDao().openSessionTransaction();
     	getIngredientDao().deleteAll(getIngredientDao().getSession());

@@ -12,7 +12,7 @@ import les.concepteurs.fooder.implement.RecetteDAO;
  * @author Florian
  *
  */
-public class ServiceRecette {
+public class ServiceRecette implements IService<Recette, Integer>{
 
 	private RecetteDAO recetteDAO;
 
@@ -23,25 +23,29 @@ public class ServiceRecette {
 	/*
 	 * Methodes
 	 */
+	@Override
 	public void persist(Recette entity) {
 		getRecetteDao().openSessionTransaction();
 		getRecetteDao().persist(getRecetteDao().getSession(), entity);
 		getRecetteDao().closeSessionTransaction();
     }
  
+	@Override
     public void update(Recette entity) {
     	getRecetteDao().openSessionTransaction();
     	getRecetteDao().update(getRecetteDao().getSession(), entity);
     	getRecetteDao().closeSessionTransaction();
     }
- 
+
+	@Override
     public Recette findById(Integer id) {
     	getRecetteDao().openSession();
         Recette recette = getRecetteDao().findById(id);
         getRecetteDao().closeSession();
         return recette;
     }
- 
+
+	@Override
     public void delete(Integer id) {
     	getRecetteDao().openSessionTransaction();
         Recette recette = getRecetteDao().findById(id);
@@ -49,13 +53,15 @@ public class ServiceRecette {
         getRecetteDao().closeSessionTransaction();
     }
  
+	@Override
     public List<Recette> findAll() {
     	getRecetteDao().openSession();
         List<Recette> listeRecettes = getRecetteDao().findAll();
         getRecetteDao().closeSession();
         return listeRecettes;
     }
- 
+
+	@Override
     public void deleteAll() {
     	getRecetteDao().openSessionTransaction();
     	getRecetteDao().deleteAll(getRecetteDao().getSession());
