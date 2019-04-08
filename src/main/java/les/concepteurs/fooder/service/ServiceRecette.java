@@ -6,7 +6,7 @@ package les.concepteurs.fooder.service;
 import java.util.List;
 
 import les.concepteurs.fooder.metier.Recette;
-import les.concepteurs.fooder.implement.RecetteDAOHib;
+import les.concepteurs.fooder.implement.RecetteDAO;
 
 /**
  * @author Florian
@@ -14,10 +14,10 @@ import les.concepteurs.fooder.implement.RecetteDAOHib;
  */
 public class ServiceRecette {
 
-	private RecetteDAOHib recetteDAO;
+	private RecetteDAO recetteDAO;
 
 	public ServiceRecette() {
-		recetteDAO = new RecetteDAOHib();
+		recetteDAO = new RecetteDAO();
 	}
 	
 	/*
@@ -62,7 +62,7 @@ public class ServiceRecette {
     	getRecetteDao().closeSessionTransaction();
     }
  
-    public RecetteDAOHib getRecetteDao() {
+    public RecetteDAO getRecetteDao() {
         return recetteDAO;
     }
 	

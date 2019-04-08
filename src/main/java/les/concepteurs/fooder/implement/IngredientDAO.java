@@ -22,13 +22,14 @@ public class IngredientDAO extends DAOHibSessionTransaction implements interface
     /*
      * CRUD functions
      */
-    
+    @Override
     public Ingredient findById(Integer id) {
     	
     	Ingredient ingredient = getSession().get(Ingredient.class, id);
         return ingredient; 
     }
     
+    @Override
     @SuppressWarnings("unchecked")
     public List<Ingredient> findAll() {
 		List<Ingredient> ingredient = (List<Ingredient>) getSession().createQuery("from ingredient").list();
