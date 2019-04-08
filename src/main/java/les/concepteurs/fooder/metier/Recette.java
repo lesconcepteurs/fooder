@@ -1,5 +1,7 @@
 package les.concepteurs.fooder.metier;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -45,7 +48,9 @@ public class Recette {
 	@Column(name="COMPLEMENT_REC")
 	private String complementRec;
 	
-	private ListeDescriptionsRecette descRec;
+	@OneToMany(mappedBy="idRec")
+	private List<Description> listeDescriptionsRecette;
+	
 	private ListeDenrees denrees;
 	private ListePreparations listePrepa;
 
@@ -78,7 +83,7 @@ public class Recette {
 		this.selPoivre = selPoivre;
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
-		this.descRec = descRec;
+		this.listeDescriptionsRecette = descRec;
 		this.denrees = denrees;
 		this.listePrepa = listePrepa;		
 	}
@@ -101,8 +106,8 @@ public class Recette {
 		return nomRec;
 	}
 
-	public ListeDescriptionsRecette getDescRec() {
-		return descRec;
+	public List<Description> getListeDescriptionsRecette() {
+		return listeDescriptionsRecette;
 	}
 
 	public boolean isSelPoivre() {
@@ -133,8 +138,8 @@ public class Recette {
 		this.nomRec = nomRec;
 	}
 
-	public void setDescRec(ListeDescriptionsRecette descRec) {
-		this.descRec = descRec;
+	public void setListeDescriptionsRecette(List<Description> descRec) {
+		this.listeDescriptionsRecette = descRec;
 	}
 
 	public void setSelPoivre(boolean selPoivre) {
@@ -177,7 +182,7 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + descRec + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
+				+ ", descRec=" + listeDescriptionsRecette + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
 	}
 
 
