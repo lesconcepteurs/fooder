@@ -1,16 +1,29 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="denree")
 public class Denree {
 	
-	
+	@OneToOne(cascade= {CascadeType.DETACH,
+						CascadeType.MERGE,
+						CascadeType.PERSIST,
+						CascadeType.REFRESH})
+	@JoinColumn(name="ID_ING")
 	private Ingredient ingredient;
-	private String NomUniteMesure;
+	
+	@OneToOne(cascade= {CascadeType.DETACH,
+						CascadeType.MERGE,
+						CascadeType.PERSIST,
+						CascadeType.REFRESH})
+	@JoinColumn(name="ID_UNITE")
+	private UniteMesure uniteMesure;
 	
 	@Column(name="QUANTITE")
 	private double quantite;
@@ -18,13 +31,13 @@ public class Denree {
 	
 	/**
 	 * @param ingredient
-	 * @param nomUniteMesure
+	 * @param uniteMesure
 	 * @param quantite
 	 */
-	public Denree(Ingredient ingredient, String nomUniteMesure, int quantite) {
+	public Denree(Ingredient ingredient, UniteMesure uniteMesure, int quantite) {
 
 		this.ingredient = ingredient;
-		this.NomUniteMesure = nomUniteMesure;
+		this.uniteMesure = uniteMesure;
 		this.quantite = quantite;
 		
 	}
@@ -39,8 +52,8 @@ public class Denree {
 		return ingredient;
 	}
 
-	public String getNomUniteMesure() {
-		return NomUniteMesure;
+	public UniteMesure getUniteMesure() {
+		return uniteMesure;
 	}
 
 	public double getQuantite() {
@@ -51,8 +64,8 @@ public class Denree {
 		this.ingredient = ingredient;
 	}
 
-	public void setNomUniteMesure(String nomUniteMesure) {
-		NomUniteMesure = nomUniteMesure;
+	public void setUniteMesure(UniteMesure uniteMesure) {
+		this.uniteMesure = uniteMesure;
 	}
 
 	public void setQuantite(int quantite) {
@@ -61,12 +74,8 @@ public class Denree {
 
 	@Override
 	public String toString() {
-		return "Denree [ingredient=" + ingredient 
-					+ ", NomUniteMesure=" + NomUniteMesure 
-					+ ", quantite=" + quantite + "]";
+		return "Denree [ingredient=" + ingredient + ", uniteMesure=" + uniteMesure + ", quantite=" + quantite + "]";
 	}
-	
-	
 	
 
 }

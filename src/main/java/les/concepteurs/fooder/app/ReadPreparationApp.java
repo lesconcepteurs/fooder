@@ -22,6 +22,11 @@ public class ReadPreparationApp {
 		System.out.println(recette);
 		System.out.println("Nom du type de recette : "+recette.getTypeRec().getNomTypeR());
 		
+		System.out.println("****************");
+		System.out.println("****************");
+		
+		
+		
 	}
 
 }
