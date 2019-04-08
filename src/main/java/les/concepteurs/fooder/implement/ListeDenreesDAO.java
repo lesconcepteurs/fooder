@@ -49,6 +49,7 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 		
 		ResultSet result = prepare.executeQuery();
 		
+		/*
 		while (result.next()) {
 			
 			Denree denree = new Denree(new IngredientDAO().find(result.getInt("ID_ING")), 
@@ -58,7 +59,7 @@ public class ListeDenreesDAO extends DAO<ListeDenrees> {
 			listeDenrees.add(denree);
 			
 		}			
-
+*/
 		prepare.close();	
 		
 		return listeDenrees;
