@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +23,12 @@ public class Denree implements Serializable {
 	@JoinColumn(name="ID_ING")
 	private Ingredient ingredient;
 	
+	//Rajout d'une propriété Recette. Devient relation bidirectionnelle. 
+	// Car une Denree doit pouvoir connaître sa Recette. Il y a bien un id_Rec dans la table de denree 
+	//ManyToOne car il peut y avoir plusieurs denrees pour une recette
+	// pas de suppression en cascade car quand on supprime une Denree, on ne veut pas supprimer la Recette associée
 	@Id
-	@OneToOne(cascade= {CascadeType.DETACH,
+	@ManyToOne(cascade= {CascadeType.DETACH,
 						CascadeType.MERGE,
 						CascadeType.PERSIST,
 						CascadeType.REFRESH})

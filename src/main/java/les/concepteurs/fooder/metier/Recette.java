@@ -49,7 +49,14 @@ public class Recette {
 	private String complementRec;
 	
 	private ListeDescriptionsRecette descRec;
-	private ListeDenrees denrees;
+	
+	//OneToMany car pour une Recette on a plusieurs Denree
+	//cascade.ALL car on veut appliquer la cascade pour tous les types, y compris la suppression.
+	// en effet, quand on supprime une recette on veut aussi supprimer les denrees associées.
+	// mappedBy pointe sur la propriété de recette de la classe Denree
+	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL)
+	private ArrayList<Denree> listeDenrees;
+	
 	private ListePreparations listePrepa;
 	
 	/*
