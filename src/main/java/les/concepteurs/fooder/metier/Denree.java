@@ -1,9 +1,18 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="denree")
 public class Denree {
+	
 	
 	private Ingredient ingredient;
 	private String NomUniteMesure;
+	
+	@Column(name="QUANTITE")
 	private double quantite;
 	
 	
