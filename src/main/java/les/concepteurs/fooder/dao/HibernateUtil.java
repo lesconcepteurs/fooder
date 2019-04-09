@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import les.concepteurs.fooder.metier.Denree;
+import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.metier.ThemeRecette;
 import les.concepteurs.fooder.metier.TypeRecette;
@@ -23,6 +24,7 @@ public class HibernateUtil {
 													.addAnnotatedClass(TypeRecette.class)
 													.addAnnotatedClass(Denree.class)
 													.addAnnotatedClass(UniteMesure.class)
+													.addAnnotatedClass(Panier.class)
 													.buildSessionFactory();
 
 

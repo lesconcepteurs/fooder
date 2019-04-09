@@ -4,9 +4,11 @@ import java.util.List;
 
 import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.Ingredient;
+import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.service.ServiceDenree;
 import les.concepteurs.fooder.service.ServiceIngredient;
+import les.concepteurs.fooder.service.ServicePanier;
 import les.concepteurs.fooder.service.ServiceRecette;
 
 public class ReadPreparationApp {
@@ -40,6 +42,11 @@ public class ReadPreparationApp {
 			System.out.println("Denrée de la recette 1 : "+listeDenrees.get(i));
 		}
 		
+		//tests de récupération de la date d'un panier avec son id
+		ServicePanier servicePanier = new ServicePanier();
+		Panier panier = servicePanier.findById(31);
+		System.out.println(panier);
+		System.out.println("Date du panier 31 : " + panier.getDatePanier());
 	}
 
 }

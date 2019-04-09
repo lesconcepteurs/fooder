@@ -2,9 +2,20 @@ package les.concepteurs.fooder.metier;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="panier")
 public class Panier {
 	
+	@Id
+	@Column(name="id_panier")
 	private int idPanier;
+	
+	@Column(name="date_panier")
 	private LocalDate datePanier;
 	
 	/**
@@ -22,7 +33,7 @@ public class Panier {
 	public Panier(){}
 	
 	/*
-	 * Settes Getters
+	 * Setter and Getters
 	 * */
 	public int getIdPanier() {
 		return idPanier;

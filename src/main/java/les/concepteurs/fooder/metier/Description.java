@@ -1,9 +1,22 @@
 package les.concepteurs.fooder.metier;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DESCRIPTION_RECETTE")
 public class Description {
 	
+	@Id
+	@Column(name="ID_DESC")
 	private int idDesc;
+	
+	@Column(name="ID_REC")
 	private int idRec;
+	
+	@Column(name="TEXT_DESC")
 	private String textDesc;
 	
 	/**

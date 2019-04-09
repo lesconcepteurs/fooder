@@ -1,6 +1,6 @@
 package les.concepteurs.fooder.metier;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,8 +50,6 @@ public class Recette {
 	@Column(name="COMPLEMENT_REC")
 	private String complementRec;
 	
-	private ListeDescriptionsRecette descRec;
-	
 	//OneToMany car pour une Recette on a plusieurs Denree
 	//cascade.ALL car on veut appliquer la cascade pour tous les types, y compris la suppression.
 	// en effet, quand on supprime une recette on veut aussi supprimer les denrees associées.
@@ -59,12 +57,10 @@ public class Recette {
 	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Denree> listeDenrees;
 	
+	@OneToMany(mappedBy="idRec")
+	private List<Description> listeDescriptionsRecette;
+
 	private ListePreparations listePrepa;
-	
-	/*
-	@OneToMany
-	private ArrayList<Denree> listeDenree;
-	*/
 	
 	/**
 	 * @param idRec (int)
@@ -84,7 +80,7 @@ public class Recette {
 			boolean selPoivre, 
 			String photoRec, 
 			String complementRec, 
-			ListeDescriptionsRecette descRec,
+			List<Description> descRec,
 			List<Denree> listeDenrees,
 			ListePreparations listePrepa) 
 	{
@@ -94,8 +90,8 @@ public class Recette {
 		this.selPoivre = selPoivre;
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
-		this.descRec = descRec;
 		this.listeDenrees = listeDenrees;
+		this.listeDescriptionsRecette = descRec;
 		this.listePrepa = listePrepa;		
 	}
 	
@@ -117,8 +113,8 @@ public class Recette {
 		return nomRec;
 	}
 
-	public ListeDescriptionsRecette getDescRec() {
-		return descRec;
+	public List<Description> getListeDescriptionsRecette() {
+		return listeDescriptionsRecette;
 	}
 
 	public boolean isSelPoivre() {
@@ -133,9 +129,12 @@ public class Recette {
 		return complementRec;
 	}
 
-
 	public ListePreparations getListePrepa() {
 		return listePrepa;
+	}
+  
+  public List<Denree> getListeDenrees() {
+		return listeDenrees;
 	}
 
 	public void setIdRec(int idRec) {
@@ -146,8 +145,8 @@ public class Recette {
 		this.nomRec = nomRec;
 	}
 
-	public void setDescRec(ListeDescriptionsRecette descRec) {
-		this.descRec = descRec;
+	public void setListeDescriptionsRecette(List<Description> descRec) {
+		this.listeDescriptionsRecette = descRec;
 	}
 
 	public void setSelPoivre(boolean selPoivre) {
@@ -160,10 +159,6 @@ public class Recette {
 
 	public void setComplementRec(String complementRec) {
 		this.complementRec = complementRec;
-	}
-
-	public List<Denree> getListeDenrees() {
-		return listeDenrees;
 	}
 
 	public void setListeDenrees(List<Denree> listeDenrees) {
@@ -194,11 +189,8 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + descRec + ", listeDenrees=" + listeDenrees + ", listePrepa=" + listePrepa + "]";
+				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listePrepa=" + listePrepa + "]";
 	}
-
-
-	
 
 }
 		
