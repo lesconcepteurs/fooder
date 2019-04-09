@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name="recette")
 public class Recette {
@@ -57,7 +60,9 @@ public class Recette {
 	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Denree> listeDenrees;
 	
+	// On utilise @LazyCollection car il n'est pas possible d'avoir 2X FetchType.EAGER dans la meme class
 	@OneToMany(mappedBy="idRec")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Description> listeDescriptionsRecette;
 
 	private ListePreparations listePrepa;

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import les.concepteurs.fooder.implement.RayonDAO;
 import les.concepteurs.fooder.metier.Ingredient;
 import les.concepteurs.fooder.metier.Rayon;
+import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.service.ServiceIngredient;
 import les.concepteurs.fooder.service.ServiceRayon;
+import les.concepteurs.fooder.service.ServiceRecette;
 
 /**
  * Servlet implementation class ListeRecettes
@@ -91,10 +93,10 @@ public class TestRecettes extends HttpServlet {
 //		Rayon rayon1 = serviceRayon.findById("1");
 //		System.out.println(rayon1);
 		
-		ServiceIngredient serviceIngredient = new ServiceIngredient();
-		Ingredient ingredient = serviceIngredient.findById(1);
-		System.out.println(ingredient);
-		System.out.println("Nom du rayon :" + ingredient.getRayon().getNomRayon());
+		ServiceRecette serviceRecette = new ServiceRecette();
+		Recette recette = serviceRecette.findById(1);
+		System.out.println(recette);
+		//System.out.println("Nom du rayon :" + ingredient.getRayon().getNomRayon());
 		
 		
 	}
