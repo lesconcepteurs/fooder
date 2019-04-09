@@ -27,7 +27,6 @@ public class ServiceDenree implements IService<Denree, Integer>
 		recetteDAO = new RecetteDAO();
 		uniteMesureDAO = new UniteMesureDAO();
 	}
-	
 
 	/*
 	 * Methodes de l'interface IService à redéfinir 
@@ -47,37 +46,19 @@ public class ServiceDenree implements IService<Denree, Integer>
 		getDenreeDAO().closeSessionTransaction();
 	}
 
-
 	@Override
 	public Denree findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-
-//	public Denree findByPrimaryKey(Integer idIng, Integer idRec, Integer idUnite) {
-//		getDenreeDAO().openSession();
-//		Denree denree = new Denree();
-//		
-//		getIngredientDAO().openSession();
-//		denree.setIngredient(getIngredientDAO().findById(idIng));
-//		getIngredientDAO().closeSession();
-//		
-//		getRecetteDAO().openSession();
-//		denree.setRecette(getRecetteDAO().findById(idRec));
-//		getRecetteDAO().closeSession();
-//		
-//		getUniteMesureDAO().openSession();
-//		denree.setUniteMesure(getUniteMesureDAO().findById(idUnite));
-//		getUniteMesureDAO().closeSession();
-//		
-//		Denree denreeNew = getDenreeDAO().getSession().load(Denree.class, denree);
-//		
-//		getDenreeDAO().closeSession();
-//		return denreeNew;
-//	}
-
-	
+	public List<Denree> findByIdRecette(Integer id) {
+		getDenreeDAO().openSession();
+		List<Denree> listeDenrees = getDenreeDAO().findByIdRecette(id);
+		getDenreeDAO().closeSession();		
+		return listeDenrees;
+	}
+		
 	@Override
 	public void delete(Integer id) {
 		getDenreeDAO().openSessionTransaction();
@@ -119,8 +100,27 @@ public class ServiceDenree implements IService<Denree, Integer>
 	}
 
 
-
-
+//	public Denree findByPrimaryKey(Integer idIng, Integer idRec, Integer idUnite) {
+//		getDenreeDAO().openSession();
+//		Denree denree = new Denree();
+//		
+//		getIngredientDAO().openSession();
+//		denree.setIngredient(getIngredientDAO().findById(idIng));
+//		getIngredientDAO().closeSession();
+//		
+//		getRecetteDAO().openSession();
+//		denree.setRecette(getRecetteDAO().findById(idRec));
+//		getRecetteDAO().closeSession();
+//		
+//		getUniteMesureDAO().openSession();
+//		denree.setUniteMesure(getUniteMesureDAO().findById(idUnite));
+//		getUniteMesureDAO().closeSession();
+//		
+//		Denree denreeNew = getDenreeDAO().getSession().load(Denree.class, denree);
+//		
+//		getDenreeDAO().closeSession();
+//		return denreeNew;
+//	}
 
 
 }

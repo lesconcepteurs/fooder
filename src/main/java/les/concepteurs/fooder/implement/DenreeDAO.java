@@ -17,6 +17,16 @@ import les.concepteurs.fooder.metier.Denree;
 public class DenreeDAO extends DAOHibSessionTransaction implements interfaceDAOHibernate<Denree, Integer> 
 {
 
+	/**
+	 * Recuperer la liste des denrees par id de recette 
+	 */
+	public List<Denree> findByIdRecette(Integer idRec)
+	{
+		List<Denree> listeDenrees = getSession().createQuery("from denree where id_rec="+idRec).getResultList();
+		
+		return listeDenrees;
+	}
+	
 	@Override
 	public Denree findById(Integer id) {
 		

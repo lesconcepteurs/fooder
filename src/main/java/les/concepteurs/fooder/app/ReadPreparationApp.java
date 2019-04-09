@@ -24,33 +24,22 @@ public class ReadPreparationApp {
 		ServiceRecette serviceRecette = new ServiceRecette();
 		Recette recette = serviceRecette.findById(1);
 		System.out.println(recette);
-		System.out.println("Nom du type de recette : "+recette.getTypeRec().getNomTypeR());
+		System.out.println("Type de la recette 1 : "+recette.getTypeRec().getNomTypeR());
 			
 		for (int i = 0 ; i < recette.getListeDenrees().size(); i++) {
-			System.out.println("Liste de denrees de la recette : "+recette.getListeDenrees());
+			System.out.println("Liste de denrees de la recette : "+recette.getListeDenrees().get(i));
 		}
 				
 		System.out.println("****************");
 		System.out.println("****************");
-				
+		
 		ServiceDenree serviceDenree = new ServiceDenree();
-		List<Denree> listeDenrees = serviceDenree.findAll();
-		System.out.println(listeDenrees);
+		List<Denree> listeDenrees = serviceDenree.findByIdRecette(1);
 		
 		for (int i = 0 ; i < listeDenrees.size() ; i++) {
-			System.out.println("Quantité de la denrée : "+listeDenrees.get(i).getQuantite());
+			System.out.println("Denrée de la recette 1 : "+listeDenrees.get(i));
 		}
 		
-		
-		/*
-		System.out.println("****************");
-		System.out.println("****************");
-		
-		ServiceDenree serviceDenree = new ServiceDenree();
-		Denree denree = serviceDenree.findById(1);
-		System.out.println(denree);
-		System.out.println("Quantité de la denrée : "+denree.getQuantite());
-		*/
 	}
 
 }
