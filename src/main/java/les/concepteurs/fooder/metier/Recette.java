@@ -1,10 +1,12 @@
 package les.concepteurs.fooder.metier;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,12 +50,17 @@ public class Recette {
 	@Column(name="COMPLEMENT_REC")
 	private String complementRec;
 	
+	//OneToMany car pour une Recette on a plusieurs Denree
+	//cascade.ALL car on veut appliquer la cascade pour tous les types, y compris la suppression.
+	// en effet, quand on supprime une recette on veut aussi supprimer les denrees associées.
+	// mappedBy pointe sur la propriété de recette de la classe Denree
+	@OneToMany(mappedBy="recette", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Denree> listeDenrees;
+	
 	@OneToMany(mappedBy="idRec")
 	private List<Description> listeDescriptionsRecette;
-	
-	private ListeDenrees denrees;
-	private ListePreparations listePrepa;
 
+	private ListePreparations listePrepa;
 	
 	/**
 	 * @param idRec (int)
@@ -73,8 +80,8 @@ public class Recette {
 			boolean selPoivre, 
 			String photoRec, 
 			String complementRec, 
-			ListeDescriptionsRecette descRec,
-			ListeDenrees denrees,
+			List<Description> descRec,
+			List<Denree> listeDenrees,
 			ListePreparations listePrepa) 
 	{
 		this.themeRec = themeRec;
@@ -83,8 +90,8 @@ public class Recette {
 		this.selPoivre = selPoivre;
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
+		this.listeDenrees = listeDenrees;
 		this.listeDescriptionsRecette = descRec;
-		this.denrees = denrees;
 		this.listePrepa = listePrepa;		
 	}
 	
@@ -122,12 +129,12 @@ public class Recette {
 		return complementRec;
 	}
 
-	public ListeDenrees getDenrees() {
-		return denrees;
-	}
-
 	public ListePreparations getListePrepa() {
 		return listePrepa;
+	}
+  
+  public List<Denree> getListeDenrees() {
+		return listeDenrees;
 	}
 
 	public void setIdRec(int idRec) {
@@ -154,8 +161,8 @@ public class Recette {
 		this.complementRec = complementRec;
 	}
 
-	public void setDenrees(ListeDenrees denrees) {
-		this.denrees = denrees;
+	public void setListeDenrees(List<Denree> listeDenrees) {
+		this.listeDenrees = listeDenrees;
 	}
 
 	public void setListePrepa(ListePreparations listePrepa) {
@@ -182,11 +189,8 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + listeDescriptionsRecette + ", denrees=" + denrees + ", listePrepa=" + listePrepa + "]";
+				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listePrepa=" + listePrepa + "]";
 	}
-
-
-	
 
 }
 		

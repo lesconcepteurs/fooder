@@ -1,8 +1,12 @@
 package les.concepteurs.fooder.app;
 
+import java.util.List;
+
+import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.Ingredient;
 import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
+import les.concepteurs.fooder.service.ServiceDenree;
 import les.concepteurs.fooder.service.ServiceIngredient;
 import les.concepteurs.fooder.service.ServicePanier;
 import les.concepteurs.fooder.service.ServiceRecette;
@@ -22,7 +26,21 @@ public class ReadPreparationApp {
 		ServiceRecette serviceRecette = new ServiceRecette();
 		Recette recette = serviceRecette.findById(1);
 		System.out.println(recette);
-		System.out.println("Nom du type de recette : "+recette.getTypeRec().getNomTypeR());
+		System.out.println("Type de la recette 1 : "+recette.getTypeRec().getNomTypeR());
+			
+		for (int i = 0 ; i < recette.getListeDenrees().size(); i++) {
+			System.out.println("Liste de denrees de la recette : "+recette.getListeDenrees().get(i));
+		}
+				
+		System.out.println("****************");
+		System.out.println("****************");
+		
+		ServiceDenree serviceDenree = new ServiceDenree();
+		List<Denree> listeDenrees = serviceDenree.findByIdRecette(1);
+		
+		for (int i = 0 ; i < listeDenrees.size() ; i++) {
+			System.out.println("Denrée de la recette 1 : "+listeDenrees.get(i));
+		}
 		
 		//tests de récupération de la date d'un panier avec son id
 		ServicePanier servicePanier = new ServicePanier();
