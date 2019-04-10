@@ -10,7 +10,7 @@ import les.concepteurs.fooder.metier.SePrepare;
 
 public class ServiceSePrepare implements IService<SePrepare, Integer> {
 	
-	/**
+	/*
 	 * 	private DenreeDAO denreeDAO;
 	private IngredientDAO ingredientDAO;
 	private RecetteDAO recetteDAO;
