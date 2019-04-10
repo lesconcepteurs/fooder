@@ -6,7 +6,7 @@ import les.concepteurs.fooder.dao.DAOHibSessionTransaction;
 import les.concepteurs.fooder.dao.interfaceDAOHibernate;
 import les.concepteurs.fooder.metier.SePrepare;
 
-/**
+/*
  * Classe de DAO pour Se prepare
  * Elle étend la classe DAOHibSessionTransaction qui permet d'ouvrir et fermer des sessions et transactions
  * Elle implémente l'interfaceDAOHibernate qui définit les methodes de CRUD d'Hibernate 
