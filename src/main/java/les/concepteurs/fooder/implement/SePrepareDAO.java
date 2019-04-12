@@ -29,7 +29,7 @@ public class SePrepareDAO extends DAOHibSessionTransaction implements interfaceD
 
 	@Override
 	public List<SePrepare> findAll() {
-		List<SePrepare> listeSePrepares = getSession().createQuery("from se_prepare").getResultList();		
+		List<SePrepare> listeSePrepares = getSession().createQuery("from SePrepare").getResultList();		
 		return listeSePrepares;
 	}
 }

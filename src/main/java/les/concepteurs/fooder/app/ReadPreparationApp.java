@@ -6,19 +6,21 @@ import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.Ingredient;
 import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
+import les.concepteurs.fooder.metier.SePrepare;
 import les.concepteurs.fooder.metier.TypePrepa;
 import les.concepteurs.fooder.metier.UniteDuree;
 import les.concepteurs.fooder.service.ServiceDenree;
 import les.concepteurs.fooder.service.ServiceIngredient;
 import les.concepteurs.fooder.service.ServicePanier;
 import les.concepteurs.fooder.service.ServiceRecette;
+import les.concepteurs.fooder.service.ServiceSePrepare;
 import les.concepteurs.fooder.service.ServiceTypePrepa;
 import les.concepteurs.fooder.service.ServiceUniteDuree;
 
 public class ReadPreparationApp {
 
 	public static void main(String[] args) {
-		
+		/*
 		ServiceIngredient serviceIngredient = new ServiceIngredient();
 		Ingredient ingredient = serviceIngredient.findById(1);
 		System.out.println(ingredient);
@@ -61,16 +63,27 @@ public class ReadPreparationApp {
 		TypePrepa typePrepa = serviceTypePrepa.findById(1);
 		System.out.println(typePrepa);
 		System.out.println("Nom du typePrepa :" + typePrepa.getNomTypePrepa());
+		*/
+		System.out.println("****************");
+		System.out.println("****************");
 		
+		ServiceSePrepare serviceSePrepare = new ServiceSePrepare();
+		//List<SePrepare> listeSePrepares = serviceSePrepare.findByIdSePrepare(1);
+		List<SePrepare> listeSePrepares = serviceSePrepare.findAll();
+		
+		for (int i = 0 ; i < listeSePrepares.size() ; i++) {
+			System.out.println("Se prépare de la recette 1 : "+listeSePrepares.get(i));
+		}
+
 		System.out.println("****************");
 		System.out.println("****************");
 		
 		//tests de récupération de la date d'un panier avec son id
-		ServicePanier servicePanier = new ServicePanier();
+	/*	ServicePanier servicePanier = new ServicePanier();
 		Panier panier = servicePanier.findById(31);
 		System.out.println(panier);
 		System.out.println("Date du panier 31 : " + panier.getDatePanier());
-		
+	*/	
 		
 		
 	}

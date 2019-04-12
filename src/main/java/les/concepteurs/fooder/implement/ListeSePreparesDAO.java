@@ -39,7 +39,7 @@ public class ListeSePreparesDAO extends DAO<ListeSePrepares>{
 	public ListeSePrepares find(int id) throws SQLException {
 		
 		ListeSePrepares listeSePrepares = new ListeSePrepares();
-		/**
+		/*
 		 * Test de la requete SQL pour ID_REC = 2
 		 * SELECT DISTINCT SP.ID_REC, SP.ID_TYPE_PREPA , SP.DUREE, 
 		 * UD.ID_UNITE_DUREE, SP.DUREE_SECOND FROM SE_PREPARE SP, UNITE_DUREE UD 

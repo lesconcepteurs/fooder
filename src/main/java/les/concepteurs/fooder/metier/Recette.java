@@ -65,7 +65,12 @@ public class Recette {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Description> listeDescriptionsRecette;
 
-	private ListePreparations listePrepa;
+	
+	//private ListePreparations listePrepa;
+	@OneToMany(mappedBy="recette")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<SePrepare> listeSePrepares;
+	
 	
 	/**
 	 * @param idRec (int)
@@ -87,7 +92,9 @@ public class Recette {
 			String complementRec, 
 			List<Description> descRec,
 			List<Denree> listeDenrees,
-			ListePreparations listePrepa) 
+			//ListePreparations listePrepa
+			List<SePrepare> listeSePrepares
+			) 
 	{
 		this.themeRec = themeRec;
 		this.typeRec = typeRec;
@@ -97,7 +104,8 @@ public class Recette {
 		this.complementRec = complementRec;
 		this.listeDenrees = listeDenrees;
 		this.listeDescriptionsRecette = descRec;
-		this.listePrepa = listePrepa;		
+		//this.listePrepa = listePrepa;		
+		this.listeSePrepares = listeSePrepares;
 	}
 	
 	/**
@@ -134,11 +142,15 @@ public class Recette {
 		return complementRec;
 	}
 
-	public ListePreparations getListePrepa() {
-		return listePrepa;
+	public List<SePrepare> getListeSePrepares() {
+		return listeSePrepares;
 	}
+
+	/*public ListePreparations getListePrepa() {
+		return listePrepa;
+	}*/
   
-  public List<Denree> getListeDenrees() {
+	public List<Denree> getListeDenrees() {
 		return listeDenrees;
 	}
 
@@ -170,10 +182,14 @@ public class Recette {
 		this.listeDenrees = listeDenrees;
 	}
 
-	public void setListePrepa(ListePreparations listePrepa) {
+	/*public void setListePrepa(ListePreparations listePrepa) {
 		this.listePrepa = listePrepa;
+	}*/
+	
+	 void setListeSePrepares(List<SePrepare> listeSePrepares) {
+		this.listeSePrepares = listeSePrepares;
 	}
-
+	
 	public ThemeRecette getThemeRec() {
 		return themeRec;
 	}
@@ -194,7 +210,7 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listePrepa=" + listePrepa + "]";
+				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listeSePrepares=" + listeSePrepares + "]";
 	}
 
 }

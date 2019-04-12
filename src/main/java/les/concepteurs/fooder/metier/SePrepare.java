@@ -9,17 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(name="SE_PREPARE")
-@Table(name="SE_PREPARE")
+@Entity
+@Table(name="se_prepare")
 public class SePrepare implements Serializable{
 	
 	//OneToMany car pour une Recette on a plusieurs Preparation
 	//cascade sans REMOVE car on ne veut pas appliquer la cascade pour tous.
 	@Id
-	@OneToMany(cascade= {CascadeType.DETACH,
+	@ManyToOne(cascade= {CascadeType.DETACH,
 			CascadeType.MERGE,
 			CascadeType.PERSIST,
 			CascadeType.REFRESH})
@@ -27,25 +29,32 @@ public class SePrepare implements Serializable{
 	private Recette recette;
 	
 	@Id
-	@OneToMany(cascade=CascadeType.ALL)
+	@ManyToOne(cascade= {CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH})
 	@JoinColumn(name = "ID_TYPE_PREPA")
-	private List<TypePrepa> listeTypePrepa;
+	private TypePrepa typePrepa;
 	
 	@Column(name = "DUREE")
 	private int duree;
 	
-	@Column(name = "ID_UNITE_DUREE")
-	private int id_unite_duree;
+	@OneToOne(cascade= {CascadeType.DETACH,
+			CascadeType.MERGE,
+			CascadeType.PERSIST,
+			CascadeType.REFRESH})
+	@JoinColumn(name="ID_UNITE_DUREE")
+	private UniteDuree uniteDuree;
 	
 	@Column(name = "DUREE_SECOND")
 	private int duree_second;
 
-	public SePrepare(Recette recette, List<TypePrepa> listeTypePrepa, int duree, int id_unite_duree, int duree_second) {
+	public SePrepare(Recette recette, TypePrepa typePrepa, int duree, UniteDuree uniteDuree, int duree_second) {
 
 		this.recette = recette;
-		this.listeTypePrepa = listeTypePrepa;
+		this.typePrepa = typePrepa;
 		this.duree = duree;
-		this.id_unite_duree = id_unite_duree;
+		this.uniteDuree = uniteDuree;
 		this.duree_second = duree_second;
 	}	
 
@@ -60,16 +69,16 @@ public class SePrepare implements Serializable{
 		return recette;
 	}
 
-	private List<TypePrepa> getListeTypePrepa() {
-		return listeTypePrepa;
+	private TypePrepa getTypePrepa() {
+		return typePrepa;
 	}
 
 	private int getDuree() {
 		return duree;
 	}
 
-	private int getId_unite_duree() {
-		return id_unite_duree;
+	private UniteDuree getUniteDuree() {
+		return uniteDuree;
 	}
 
 	private int getDuree_second() {
@@ -82,18 +91,18 @@ public class SePrepare implements Serializable{
 	}
 
 	@SuppressWarnings("unused")
-	private void setListeTypePrepa(List<TypePrepa> listeTypePrepa) {
-		this.listeTypePrepa = listeTypePrepa;
+	private void setTypePrepa(TypePrepa typePrepa) {
+		this.typePrepa = typePrepa;
 	}
 
 	@SuppressWarnings("unused")
 	private void setDuree(int duree) {
 		this.duree = duree;
 	}
-
+	
 	@SuppressWarnings("unused")
-	private void setId_unite_duree(int id_unite_duree) {
-		this.id_unite_duree = id_unite_duree;
+	private void setUniteDuree(UniteDuree uniteDuree) {
+		this.uniteDuree = uniteDuree;
 	}
 
 	@SuppressWarnings("unused")
@@ -103,8 +112,8 @@ public class SePrepare implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SePrepare [recette=" + recette + ", listeTypePrepa=" + listeTypePrepa + ", duree=" + duree
-				+ ", id_unite_duree=" + id_unite_duree + ", duree_second=" + duree_second + "]";
+		return "SePrepare [recette=" + recette + ", typePrepa=" + typePrepa + ", duree=" + duree
+				+ ", uniteDuree=" + uniteDuree + ", duree_second=" + duree_second + "]";
 	}
 	
 	

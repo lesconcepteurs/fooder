@@ -6,23 +6,17 @@ import les.concepteurs.fooder.implement.RecetteDAO;
 import les.concepteurs.fooder.implement.SePrepareDAO;
 import les.concepteurs.fooder.implement.TypePrepaDAO;
 import les.concepteurs.fooder.implement.UniteDureeDAO;
+import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.SePrepare;
 
 public class ServiceSePrepare implements IService<SePrepare, Integer> {
-	
-	/**
-	 * 	private DenreeDAO denreeDAO;
-	private IngredientDAO ingredientDAO;
-	private RecetteDAO recetteDAO;
-	private UniteMesureDAO uniteMesureDAO;
-	 */
 	
 	private RecetteDAO recetteDAO;
 	private SePrepareDAO seprepareDAO;
 	private TypePrepaDAO typeprepaDAO;
 	private UniteDureeDAO unitedureeDAO;
 	
-	private ServiceSePrepare() {
+	public ServiceSePrepare() {
 		recetteDAO = new RecetteDAO();
 		seprepareDAO = new SePrepareDAO();
 		typeprepaDAO = new TypePrepaDAO();
@@ -47,10 +41,15 @@ public class ServiceSePrepare implements IService<SePrepare, Integer> {
 
 	@Override
 	public SePrepare findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<SePrepare> findByIdSePrepare(Integer id) {
 		getSeprepareDAO().openSession();
-		SePrepare sePrepare = getSeprepareDAO().findById(id);
-        getSeprepareDAO().closeSession();
-        return sePrepare;
+		List<SePrepare> listeSePrepares = getSeprepareDAO().findByIdSePrepare(id);
+		getSeprepareDAO().closeSession();		
+		return listeSePrepares;
 	}
 
 	@Override
