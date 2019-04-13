@@ -16,7 +16,7 @@ import les.concepteurs.fooder.metier.SePrepare;
 public class SePrepareDAO extends DAOHibSessionTransaction implements interfaceDAOHibernate<SePrepare, Integer> {
 
 	public List<SePrepare> findByIdSePrepare(Integer idRec) {
-		List<SePrepare> listeSePrepares = getSession().createQuery("from se_prepare where id_rec="+idRec).getResultList();	
+		List<SePrepare> listeSePrepares = getSession().createQuery("from SePrepare where id_rec="+idRec).getResultList();	
 		return listeSePrepares;
 	}
 

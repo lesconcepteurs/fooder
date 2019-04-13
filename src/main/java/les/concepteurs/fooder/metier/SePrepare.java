@@ -1,16 +1,12 @@
 package les.concepteurs.fooder.metier;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,7 +33,7 @@ public class SePrepare implements Serializable{
 	private TypePrepa typePrepa;
 	
 	@Column(name = "DUREE")
-	private int duree;
+	private Integer duree;
 	
 	@OneToOne(cascade= {CascadeType.DETACH,
 			CascadeType.MERGE,
@@ -47,7 +43,7 @@ public class SePrepare implements Serializable{
 	private UniteDuree uniteDuree;
 	
 	@Column(name = "DUREE_SECOND")
-	private int duree_second;
+	private Integer duree_second;
 
 	public SePrepare(Recette recette, TypePrepa typePrepa, int duree, UniteDuree uniteDuree, int duree_second) {
 
@@ -73,7 +69,7 @@ public class SePrepare implements Serializable{
 		return typePrepa;
 	}
 
-	private int getDuree() {
+	private Integer getDuree() {
 		return duree;
 	}
 
@@ -81,7 +77,7 @@ public class SePrepare implements Serializable{
 		return uniteDuree;
 	}
 
-	private int getDuree_second() {
+	private Integer getDuree_second() {
 		return duree_second;
 	}
 
@@ -96,7 +92,7 @@ public class SePrepare implements Serializable{
 	}
 
 	@SuppressWarnings("unused")
-	private void setDuree(int duree) {
+	private void setDuree(Integer duree) {
 		this.duree = duree;
 	}
 	
@@ -106,15 +102,17 @@ public class SePrepare implements Serializable{
 	}
 
 	@SuppressWarnings("unused")
-	private void setDuree_second(int duree_second) {
+	private void setDuree_second(Integer duree_second) {
 		this.duree_second = duree_second;
 	}
 
 	@Override
 	public String toString() {
-		return "SePrepare [recette=" + recette + ", typePrepa=" + typePrepa + ", duree=" + duree
+		return "SePrepare ["+ recette.getNomRec()+" typePrepa=" + typePrepa + ", duree=" + duree
 				+ ", uniteDuree=" + uniteDuree + ", duree_second=" + duree_second + "]";
 	}
+	
+
 	
 	
 }

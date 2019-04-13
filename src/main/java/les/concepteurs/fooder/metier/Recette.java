@@ -92,7 +92,6 @@ public class Recette {
 			String complementRec, 
 			List<Description> descRec,
 			List<Denree> listeDenrees,
-			//ListePreparations listePrepa
 			List<SePrepare> listeSePrepares
 			) 
 	{
@@ -103,8 +102,7 @@ public class Recette {
 		this.photoRec = photoRec;
 		this.complementRec = complementRec;
 		this.listeDenrees = listeDenrees;
-		this.listeDescriptionsRecette = descRec;
-		//this.listePrepa = listePrepa;		
+		this.listeDescriptionsRecette = descRec;		
 		this.listeSePrepares = listeSePrepares;
 	}
 	
@@ -145,10 +143,6 @@ public class Recette {
 	public List<SePrepare> getListeSePrepares() {
 		return listeSePrepares;
 	}
-
-	/*public ListePreparations getListePrepa() {
-		return listePrepa;
-	}*/
   
 	public List<Denree> getListeDenrees() {
 		return listeDenrees;
@@ -181,10 +175,6 @@ public class Recette {
 	public void setListeDenrees(List<Denree> listeDenrees) {
 		this.listeDenrees = listeDenrees;
 	}
-
-	/*public void setListePrepa(ListePreparations listePrepa) {
-		this.listePrepa = listePrepa;
-	}*/
 	
 	 void setListeSePrepares(List<SePrepare> listeSePrepares) {
 		this.listeSePrepares = listeSePrepares;
@@ -210,7 +200,7 @@ public class Recette {
 	public String toString() {
 		return "Recette [idRec=" + idRec + ", themeRec=" + themeRec + ", typeRec=" + typeRec + ", nomRec=" + nomRec
 				+ ", selPoivre=" + selPoivre + ", photoRec=" + photoRec + ", complementRec=" + complementRec
-				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listeSePrepares=" + listeSePrepares + "]";
+				+ ", descRec=" + listeDescriptionsRecette + ", listeDenrees=" + listeDenrees + ", listeSePrepares=" + listeSePrepares +"]";
 	}
 
 }
