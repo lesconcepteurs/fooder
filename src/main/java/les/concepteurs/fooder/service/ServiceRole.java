@@ -45,13 +45,17 @@ public class ServiceRole implements IService<Role, Integer> {
 
 	@Override
 	public List<Role> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		getRoleDAO().openSession();
+		List<Role> roles = getRoleDAO().findAll();
+		getRoleDAO().closeSession();
+		return roles;
 	}
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
+		getRoleDAO().openSessionTransaction();
+		getRoleDAO().deleteAll(getRoleDAO().getSession());
+		getRoleDAO().closeSessionTransaction();
 		
 	}
 	
