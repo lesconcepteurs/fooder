@@ -11,10 +11,7 @@ import les.concepteurs.fooder.metier.SePrepare;
 
 public class ServiceSePrepare implements IService<SePrepare, Integer> {
 	
-	private RecetteDAO recetteDAO;
 	private SePrepareDAO seprepareDAO;
-	private TypePrepaDAO typeprepaDAO;
-	private UniteDureeDAO unitedureeDAO;
 	
 	public ServiceSePrepare() {
 		recetteDAO = new RecetteDAO();
@@ -78,20 +75,8 @@ public class ServiceSePrepare implements IService<SePrepare, Integer> {
 	}
 
 	/* Getter */
-	public RecetteDAO getRecetteDAO() {
-		return recetteDAO;
-	}
-
 	public SePrepareDAO getSeprepareDAO() {
 		return seprepareDAO;
 	}
-
-	public TypePrepaDAO getTypeprepaDAO() {
-		return typeprepaDAO;
-	}
-
-	public UniteDureeDAO getUnitedureeDAO() {
-		return unitedureeDAO;
-	}	
-	
+		
 }
