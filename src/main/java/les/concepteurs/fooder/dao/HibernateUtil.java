@@ -9,6 +9,7 @@ import les.concepteurs.fooder.metier.Denree;
 import les.concepteurs.fooder.metier.Description;
 import les.concepteurs.fooder.metier.Panier;
 import les.concepteurs.fooder.metier.Recette;
+import les.concepteurs.fooder.metier.SePrepare;
 import les.concepteurs.fooder.metier.ThemeRecette;
 import les.concepteurs.fooder.metier.TypePrepa;
 import les.concepteurs.fooder.metier.TypeRecette;
@@ -36,6 +37,7 @@ public class HibernateUtil {
 													.addAnnotatedClass(UniteDuree.class)
 													.addAnnotatedClass(Role.class)
 													.addAnnotatedClass(Utilisateur.class)
+													.addAnnotatedClass(SePrepare.class)
 													.buildSessionFactory();
 
 
