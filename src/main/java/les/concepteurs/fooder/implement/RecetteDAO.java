@@ -28,7 +28,7 @@ public class RecetteDAO extends DAOHibSessionTransaction implements interfaceDAO
 	@Override
 	public List<Recette> findAll() {
 		
-		List<Recette> listeRecettes = getSession().createQuery("from recette").getResultList();
+		List<Recette> listeRecettes = getSession().createQuery("from Recette").getResultList();
 		
 		return listeRecettes;
 	}

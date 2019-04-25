@@ -14,10 +14,7 @@ public class ServiceSePrepare implements IService<SePrepare, Integer> {
 	private SePrepareDAO seprepareDAO;
 	
 	public ServiceSePrepare() {
-		recetteDAO = new RecetteDAO();
 		seprepareDAO = new SePrepareDAO();
-		typeprepaDAO = new TypePrepaDAO();
-		unitedureeDAO = new UniteDureeDAO();
 	}
 
 	@Override

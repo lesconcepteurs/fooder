@@ -37,6 +37,12 @@ public class ReadPreparationApp {
 		System.out.println("Liste de denrees de la recette : "+recette.
 		getListeDenrees().get(i)); }
 		
+		List<Recette> listeRecettes = serviceRecette.findAll();
+		for (Recette rec : listeRecettes) {
+			System.out.println("recette :"+rec);
+		}
+		
+		
 		System.out.println("****************");
 		System.out.println("****************");
 		

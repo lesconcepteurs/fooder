@@ -1,6 +1,7 @@
 package les.concepteurs.fooder.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import les.concepteurs.fooder.metier.ListeRecettes;
+import les.concepteurs.fooder.metier.Recette;
 import les.concepteurs.fooder.service.ServiceRecette;
 
 /**
@@ -34,8 +36,10 @@ public class AccueilRecette extends HttpServlet {
 		
 		// création d'un objet ServiceRecette qui fera appel à ListeRecettesDAO
 		ServiceRecette servRec = new ServiceRecette();
-		ListeRecettes listeRecettes = null;
-		/*listeRecettes = servRec.recupListeRecettes();*/
+		/*ListeRecettes listeRecettes = null;
+		listeRecettes = servRec.recupListeRecettes();*/ // avant hibernate
+		
+		List<Recette> listeRecettes = servRec.findAll();
 		
 		//controle 
 		System.out.println(listeRecettes);
