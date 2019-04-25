@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="les.concepteurs.fooder.metier.ListeRecettes"%>
 <%@ page import="les.concepteurs.fooder.metier.Recette"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -30,9 +31,12 @@
 		<div class="carousel">
 			<!--  parcourir la liste de recettes et affichage dans le caroussel -->
 			<%
-				ListeRecettes listeRecettes = (ListeRecettes) request.getAttribute("listeRecettes");
+				//ListeRecettes listeRecettes = (ListeRecettes) request.getAttribute("listeRecettes");
+				List<Recette> listeRecettes = (List<Recette>) request.getAttribute("listeRecettes");		
 				int i = 0;
 				for (Recette rec : listeRecettes) { // iteration dans l'Arraylist Recette
+					
+					
 			%>
 			<input type="checkbox" class="faux-ui-facia">
 			<div class="slide" slide="<%=i++%>"
