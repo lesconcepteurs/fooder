@@ -1,5 +1,7 @@
 package les.concepteurs.fooder.dao;
 
+import javax.management.relation.Role;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -13,6 +15,7 @@ import les.concepteurs.fooder.metier.TypePrepa;
 import les.concepteurs.fooder.metier.TypeRecette;
 import les.concepteurs.fooder.metier.UniteDuree;
 import les.concepteurs.fooder.metier.UniteMesure;
+import les.concepteurs.fooder.metier.Utilisateur;
 
 
 public class HibernateUtil {
@@ -32,6 +35,8 @@ public class HibernateUtil {
 													.addAnnotatedClass(Description.class)
 													.addAnnotatedClass(TypePrepa.class)
 													.addAnnotatedClass(UniteDuree.class)
+													.addAnnotatedClass(Role.class)
+													.addAnnotatedClass(Utilisateur.class)
 													.addAnnotatedClass(SePrepare.class)
 													.buildSessionFactory();
 
